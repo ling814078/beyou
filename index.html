@@ -3,836 +3,282 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>豐盛人生盤點</title>
-<meta name="description" content="BeYou 豐盛實驗室：8 個生活維度的生命之輪，加上跨經驗優勢導航。資料只存在妳的瀏覽器。">
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>BeYou 豐盛實驗室｜琳琳・女性共學與真實連結</title>
+<meta name="description" content="新竹的女性交流圈。給 30+ 正在一人工作、或摸索下一段職涯的妳：免費豐盛人生盤點、優勢線索實驗室、一對一探索盤點與 BeYou 聚會。">
+<meta property="og:title" content="BeYou 豐盛實驗室｜琳琳">
+<meta property="og:description" content="陪 30+ 女性，把卡住的想法整理成下一步。">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
-/* BeYou 豐盛實驗室 v2.0 — mobile-first single column; two tools (盤點 / 優勢導航) switched by tabs */
 :root{
-  --bg:#faf6f1; --surface:#ffffff; --fg:#3d3530; --muted:#6f6058; --accent:#b08968; --accent-soft:#efe3d6; --line:#e6dbcf; --low:#a0583f; --ok:#5f7a52;
+  --bg:#faf6f1; --surface:#ffffff; --fg:#3d3530; --muted:#6f6058; --accent:#b08968; --accent-soft:#efe3d6; --line:#e6dbcf; --low:#a0583f; --deep:#3f4a3c;
   --f-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
   --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   color-scheme:light;
-  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#1f1b18; --surface:#29231f; --fg:#efe6dc; --muted:#b3a497; --accent:#c9a27e; --accent-soft:#3a3029; --line:#3e352e; --low:#e08f6f; --ok:#9cbc8a; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#1f1b18; --surface:#29231f; --fg:#efe6dc; --muted:#b3a497; --accent:#c9a27e; --accent-soft:#3a3029; --line:#3e352e; --low:#e08f6f; --ok:#9cbc8a; color-scheme:dark}
-
 *{box-sizing:border-box}
-[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
 html,body{margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px;-webkit-text-size-adjust:100%}
-img{max-width:100%}
-.wrap{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
-header{display:flex;flex-direction:column;gap:10px;text-align:center;padding-top:8px}
-.eyebrow{font-size:13px;letter-spacing:.12em;color:var(--accent)}
-h1{font-family:var(--f-display);font-weight:700;font-size:clamp(34px,9vw,46px);line-height:1.25;margin:0;text-wrap:balance}
-.lede{color:var(--muted);margin:0;text-wrap:balance}
-.privacy{font-size:13px;color:var(--muted);background:var(--accent-soft);border-radius:14px;padding:8px 14px;line-height:1.6;text-align:left}
-.privacy b{color:var(--fg)}
-
-section{display:flex;flex-direction:column;gap:16px;min-width:0}
-.step{display:flex;align-items:baseline;gap:10px}
-.step b{font-family:var(--f-display);font-size:14px;color:var(--accent);letter-spacing:.06em;white-space:nowrap}
-h2{font-family:var(--f-display);font-size:24px;margin:0;line-height:1.35;text-wrap:balance}
-h3{margin:0}
-.hint{color:var(--muted);font-size:14px;margin:0}
-.sample{font-size:13px;color:var(--accent);border:1px solid var(--accent);border-radius:12px;padding:6px 12px;align-self:flex-start;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
-.linkbtn{font:inherit;font-size:13px;background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer}
-
-/* tabs */
-.tabs{display:flex;gap:6px;background:var(--accent-soft);border-radius:999px;padding:4px;align-self:center;margin-top:6px}
-.tabs a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;padding:8px 16px;border-radius:999px}
-.tabs a[aria-current="page"]{background:var(--surface);color:var(--fg);font-weight:700}
-.view{display:flex;flex-direction:column;gap:40px}
-
-/* check */
-.scale{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:8px}
-.dims{display:flex;flex-direction:column}
-.dim{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
-.dim label{font-weight:700;font-size:17px}
-.dim .q{grid-column:1/-1;font-size:14px;color:var(--muted);line-height:1.55}
-.dim output{font-variant-numeric:tabular-nums;font-weight:700;font-size:20px;color:var(--accent);min-width:2ch;text-align:right}
-.dim.is-low output{color:var(--low)}
-input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--accent);height:32px;margin:4px 0 0;touch-action:manipulation}
-.wheel,.map{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:12px}
-.wheel svg,.map svg{display:block;width:100%;height:auto;max-width:100%}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:7px 14px;cursor:pointer;min-height:36px}
-.chip[aria-pressed="true"]{background:var(--low);border-color:var(--low);color:#fff}
-.tips{display:flex;flex-direction:column;gap:12px}
-.tip{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px}
-.tip h3{font-family:var(--f-display);font-size:19px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
-.tip h3 span{font-family:var(--f-body);font-size:13px;color:var(--low);font-weight:500;white-space:nowrap}
-.tip p{margin:0}
-.tip .act{font-size:15px;background:var(--accent-soft);border-radius:10px;padding:10px 12px}
-.tip .card{font-size:13px;color:var(--muted)}
-.next{background:var(--surface);border:1.5px dashed var(--accent);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px}
-.next h3{font-family:var(--f-display);font-size:19px}
-.next p{margin:0;font-size:15px;color:var(--muted)}
-.next a{color:var(--accent);font-weight:700;text-decoration:none}
-
-/* share box */
-.send{background:var(--accent);color:#fff;border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px}
-.send h2,.send .step b{color:#fff}
-.send p{margin:0}
-.msg{background:rgba(255,255,255,.16);border-radius:12px;padding:12px 14px;font-size:14px;white-space:pre-wrap;word-break:break-word;user-select:all}
-.row{display:flex;flex-wrap:wrap;gap:10px}
-.btn{font:inherit;font-weight:700;font-size:16px;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;flex:1 1 auto;min-height:46px;touch-action:manipulation}
-.btn-line{background:#06c755;color:#fff}
-.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.7)}
-.btn-plain{background:var(--surface);color:var(--fg);border:1px solid var(--line)}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--surface);padding:6px 10px;z-index:10}
+.in{max-width:960px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-left,0px))}
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .in{display:flex;align-items:center;gap:16px;height:60px}
+.logo{font-family:var(--f-display);font-weight:700;font-size:18px;text-decoration:none;white-space:nowrap}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:18px;margin-left:auto;font-size:14px}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--fg)}
+.navline{font-size:14px;font-weight:700;text-decoration:none;background:#06c755;color:#fff;border-radius:999px;padding:7px 14px;white-space:nowrap}
+@media (max-width:760px){.links{display:none}.navline{margin-left:auto}}
+/* sections */
+section{padding:72px 0}
+.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--accent);margin:0 0 10px}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.3;text-wrap:balance}
+h1{font-size:clamp(36px,8vw,58px)}
+h2{font-size:clamp(26px,5vw,36px);margin-bottom:14px}
+h3{font-size:20px}
+p{margin:0}
+.lead{color:var(--muted);font-size:17px;max-width:36em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-weight:700;font-size:16px;text-decoration:none;border-radius:999px;padding:12px 22px;min-height:46px;border:0;cursor:pointer}
 .btn-main{background:var(--fg);color:var(--bg)}
-.btn-sm{font-size:14px;min-height:38px;padding:8px 14px;flex:0 0 auto}
-.btn-danger{background:transparent;color:var(--low);border:1px solid var(--low)}
-.small{font-size:13px;opacity:.92}
-.small a{color:#fff}
-.result{display:flex;flex-direction:column;gap:12px}
-.result img{width:100%;border-radius:16px;border:1px solid var(--line)}
-
-/* experience cards */
-.cards{display:flex;flex-direction:column;gap:12px}
-.xcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
-.xcard.editing{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
-.xhead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.xhead h3{font-size:17px;line-height:1.45;word-break:break-word;min-width:0}
-.xmeta{display:flex;flex-wrap:wrap;gap:6px;font-size:12px}
-.tag{border:1px solid var(--line);border-radius:999px;padding:1px 9px;color:var(--muted);background:var(--bg)}
-.tag.v{border-color:var(--accent);color:var(--accent)}
-.tag.up{border-color:var(--ok);color:var(--ok)}
-.tag.down{border-color:var(--low);color:var(--low)}
-.xsum{margin:0;font-size:14px;color:var(--muted);word-break:break-word}
-.xactions{display:flex;gap:8px;flex-wrap:wrap}
-.field{display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted)}
-.field span.req{color:var(--fg);font-weight:500}
-textarea,input[type=text],select{font:inherit;font-size:16px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
-textarea{min-height:68px;resize:vertical}
-.vchips{display:flex;flex-wrap:wrap;gap:6px}
-.vchip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;padding:6px 12px;cursor:pointer;min-height:36px;touch-action:manipulation}
-.vchip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-.scale5{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.scale5 button{font:inherit;font-size:15px;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;touch-action:manipulation}
-.scale5 button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg);font-weight:700}
-.scale5 small{color:var(--muted);font-size:12px}
-.seg{display:flex;gap:6px}
-.seg button{flex:1;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:10px;padding:9px 6px;cursor:pointer;min-height:40px}
-.seg button[aria-pressed="true"]{border-color:var(--fg);color:var(--fg);font-weight:700;background:var(--surface)}
-.progress{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;color:var(--muted);flex-wrap:wrap}
-.notice{background:var(--accent-soft);border-radius:12px;padding:10px 14px;font-size:14px;margin:0}
-
-/* matrix */
-.matrix-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);-webkit-overflow-scrolling:touch}
-table.matrix{border-collapse:collapse;font-size:13px;min-width:100%}
-.matrix th,.matrix td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:center;white-space:nowrap}
-.matrix th:first-child,.matrix td:first-child{text-align:left;position:sticky;left:0;background:var(--surface);max-width:9em;overflow:hidden;text-overflow:ellipsis}
-.matrix thead th{font-weight:500}
-.matrix thead button{font:inherit;font-size:13px;font-weight:700;background:none;border:0;color:var(--accent);cursor:pointer;text-decoration:underline;padding:4px}
-.matrix td.s{color:var(--low);font-size:16px}
-.matrix td.w{color:var(--accent);font-size:16px}
-.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--muted)}
-.detail{background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
-.detail h3{font-family:var(--f-display);font-size:19px}
-.ev{border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:2px;font-size:14px}
-.ev b{font-size:15px}
-.ev p{margin:0;word-break:break-word}
-.ev .lbl{color:var(--muted)}
-
-/* tiers */
-.tiers{display:flex;flex-direction:column;gap:22px}
-.tier{display:flex;flex-direction:column;gap:10px}
-.tier > h3{font-size:16px;display:flex;gap:8px;align-items:center}
-.tier > p{margin:0;font-size:13px;color:var(--muted)}
-.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:0 0 auto}
-.hypo{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px}
-.hypo h4{margin:0;font-family:var(--f-display);font-size:19px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;align-items:baseline}
-.pill{font-family:var(--f-body);font-size:12px;border-radius:999px;padding:1px 9px;white-space:nowrap;font-weight:500;border:1px solid currentColor}
-.p-hypo{color:var(--low)} .p-explore{color:var(--accent)} .p-clue{color:var(--muted)} .p-ok{color:var(--ok)}
-.hypo p{margin:0;font-size:14px}
-.hypo .facts{color:var(--muted)}
-.review{display:flex;flex-direction:column;gap:8px;border-top:1px dashed var(--line);padding-top:10px}
-
-/* task */
-.explore{background:var(--accent-soft);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
-.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.days label{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;color:var(--muted)}
-.days input{width:24px;height:24px;accent-color:var(--accent)}
-.pattern{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0;padding-left:2em;display:flex;flex-direction:column;gap:6px}
-footer{text-align:center;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:10px;align-items:center}
-footer a{color:inherit}
-details summary{cursor:pointer;color:var(--accent);font-weight:500;padding:6px 0}
-.backup{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px}
-.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;background:var(--accent-soft);border-radius:12px;padding:10px 12px}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+.btn-line{background:#06c755;color:#fff}
+.btn-ghost{border:1.5px solid var(--fg);color:var(--fg);background:transparent}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+/* hero */
+.hero{padding:80px 0 64px}
+.hero .in{display:flex;flex-direction:column;gap:22px}
+.hello{font-size:18px;color:var(--muted)}
+.proof{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.proof::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+/* paths */
+.paths{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:24px}
+.path{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.path .tag{font-size:12px;color:var(--accent);letter-spacing:.08em}
+.path p{color:var(--muted);font-size:15px;flex:1}
+.path a.go{font-weight:700;text-decoration:none;color:var(--low)}
+.path.main{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.sub{font-size:14px;color:var(--muted);margin-top:16px}
+.sub a{color:var(--accent);font-weight:700}
+/* services */
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+.svc{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:28px}
+.card{border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
+.card .lv{font-size:12px;letter-spacing:.1em;color:var(--muted)}
+.card .price{font-family:var(--f-display);font-size:22px;color:var(--low)}
+.card ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:15px}
+.card .btn{margin-top:auto;align-self:flex-start}
+/* about */
+.about{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:start}
+.about .txt{display:flex;flex-direction:column;gap:14px;color:var(--muted)}
+.quote{font-family:var(--f-display);font-size:clamp(24px,4.5vw,32px);line-height:1.45;border-left:3px solid var(--accent);padding-left:18px}
+/* beyou */
+.ways{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:24px}
+.way{border-top:2px solid var(--accent);padding-top:12px}
+.way p{color:var(--muted);font-size:15px}
+.steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:28px;counter-reset:s}
+.st{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;counter-increment:s}
+.st::before{content:counter(s);font-family:var(--f-display);font-size:28px;color:var(--accent);display:block;line-height:1}
+.st p{color:var(--muted);font-size:15px}
+/* events */
+.ev{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:8px;margin-top:20px;max-width:620px}
+.ev .meta{font-size:14px;color:var(--muted)}
+/* faq */
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:20px;max-width:720px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--accent)}
+details[open] summary::after{content:"－"}
+details p{color:var(--muted);margin-top:8px;font-size:15px}
+/* cta */
+.cta{background:var(--deep);color:#f5efe7;text-align:center}
+.cta .in{display:flex;flex-direction:column;align-items:center;gap:18px}
+.cta p{color:#d9cfc3}
+.cta .btn-ghost{border-color:#f5efe7;color:#f5efe7}
+footer{padding:28px 0 40px;font-size:13px;color:var(--muted);text-align:center}
+footer a{color:var(--accent)}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <span class="eyebrow">BeYou 豐盛實驗室 × Lynn</span>
-    <h1>豐盛人生盤點</h1>
-    <p class="lede" id="lede">8 個生活維度，3 分鐘看見：哪裡正在支撐妳，哪裡正在消耗妳。</p>
-    <p class="privacy"><b>妳填的內容只存在這台裝置的瀏覽器，不會自動上傳。</b>只有在妳按下「開啟 LINE 傳送」並送出時，畫面上那段訊息才會離開裝置、傳到 Lynn 的官方 LINE。</p>
-    <nav class="tabs" aria-label="切換工具">
-      <a href="#check" id="tab-check">豐盛盤點</a>
-      <a href="#strengths" id="tab-strengths">優勢導航</a>
-    </nav>
-  </header>
-
-  <!-- ================= 豐盛盤點 ================= -->
-  <div class="view" id="view-check">
-    <section aria-labelledby="s1">
-      <div class="step"><b>STEP 1</b><h2 id="s1">憑直覺打分</h2></div>
-      <p class="hint">拉動滑桿，不用想太久。伴侶親密：單身的話，就寫妳與自己的親密感。</p>
-      <span class="sample" id="sampleTag">目前是範例分數，拉一下就換成妳的</span>
-      <div class="scale"><span>1　匱乏、焦慮、失衡</span><span>滿足、穩定、被滋養　10</span></div>
-      <div class="dims" id="dims"></div>
-    </section>
-
-    <section aria-labelledby="s2">
-      <div class="step"><b>STEP 2</b><h2 id="s2">妳的生命之輪</h2></div>
-      <div class="wheel"><svg id="wheel" viewBox="-50 0 500 380" role="img" aria-label="生命之輪雷達圖"></svg></div>
-      <p class="hint">紅色是分數最低的 2 項。想換成別的，點下面的名稱。</p>
-      <div class="chips" id="chips"></div>
-    </section>
-
-    <section aria-labelledby="s3">
-      <div class="step"><b>STEP 3</b><h2 id="s3">從這兩項開始照顧</h2></div>
-      <div class="tips" id="tips"></div>
-      <aside class="next">
-        <h3>興趣多、經歷廣，正在找新方向？</h3>
-        <p id="nextWhy">把散在不同人生階段的經驗放在一起，找出一直重複出現的能力。</p>
-        <a href="#strengths">接著做：妳的優勢藏在哪裡？ →</a>
-      </aside>
-    </section>
-
-    <section class="send" aria-labelledby="s4">
-      <div class="step"><b>STEP 4</b><h2 id="s4">把結果傳給 Lynn</h2></div>
-      <p>傳到 Lynn 的官方 LINE，我會回妳一則對應的整理小建議，再送妳完整版盤點表：3 題深度書寫＋30 天行動卡。</p>
-      <p class="small">會傳出去的只有下面這段文字：</p>
-      <div class="msg" id="msg"></div>
-      <div class="row">
-        <a class="btn btn-line" id="lineBtn" href="#" target="_blank" rel="noopener">開啟 LINE 傳送</a>
-        <button class="btn btn-ghost" id="copyBtn" type="button">複製訊息</button>
-      </div>
-      <p class="small">打不開的話：複製訊息，到 LINE 搜尋 ID <b>@514bnkfe</b> 貼上傳送。還沒加好友？<a href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">先加好友</a></p>
-    </section>
-
-    <section class="result" aria-labelledby="s5">
-      <div class="step"><b>收藏</b><h2 id="s5">存一張結果圖</h2></div>
-      <button class="btn btn-plain" id="makeImg" type="button">產生我的結果圖</button>
-      <img id="resultImg" alt="我的豐盛人生盤點結果圖" hidden>
-      <a class="btn btn-main" id="dlCheck" hidden>下載圖片</a>
-      <p class="hint" id="imgHint" hidden>手機也可以長按圖片存到相簿。尺寸是 9:16，可以直接分享到限動，記得標註 @im_lynn33。</p>
-    </section>
-  </div>
-
-  <!-- ================= 優勢導航 ================= -->
-  <div class="view" id="view-strengths" hidden>
-    <section aria-labelledby="t0" style="text-align:center;align-items:center">
-      <h2 id="t0" style="font-size:30px">妳的優勢藏在哪裡？</h2>
-      <p class="lede">把不同人生階段的經驗寫成卡片，對照每一段裡妳實際做了什麼、結果如何、別人怎麼說，找出跨經驗重複出現的能力。</p>
-      <p class="hint">這也是「優勢線索實驗室」工作坊用的工具，工作坊當天會帶著妳一起做。</p>
-      <p class="notice" id="migrateNote" hidden>已把妳舊版優勢地圖的內容轉成經驗卡，原本的資料也還保留在這台裝置上。</p>
-      <div class="sample" id="sSample"><span>目前是 4 張範例經驗卡（工作、興趣、家庭、社群）</span><button type="button" class="linkbtn" id="sClear">清空範例，開始寫我的</button></div>
-    </section>
-
-    <section aria-labelledby="t1">
-      <div class="step"><b>STEP 1</b><h2 id="t1">人生經驗卡</h2></div>
-      <p class="hint">建議至少寫 3 段不同的經驗，最好來自不同領域。寫不完也沒關係，內容會自動存在這台裝置。</p>
-      <div class="progress"><span id="cardCount"></span><span id="saveState" aria-live="polite"></span></div>
-      <div class="cards" id="cards"></div>
-      <button class="btn btn-plain" id="addCard" type="button">＋ 新增一張經驗卡</button>
-    </section>
-
-    <section aria-labelledby="t2">
-      <div class="step"><b>STEP 2</b><h2 id="t2">經驗 × 能力證據表</h2></div>
-      <p class="hint">每一列是一段經驗，每一欄是一個能力。點欄位名稱，可以看到這個能力在每段經驗裡的行為和結果。</p>
-      <div class="legend"><span>● 擅長 4 分以上，且寫了行為與結果</span><span>○ 有選，但證據還不夠</span><span>能力多的時候，表格可以左右滑動</span></div>
-      <div class="matrix-wrap" id="matrixWrap"></div>
-      <div class="detail" id="detail" hidden></div>
-    </section>
-
-    <section aria-labelledby="t3">
-      <div class="step"><b>STEP 3</b><h2 id="t3">跨經驗優勢分析</h2></div>
-      <p class="hint">這裡是假設，不是定論。看完每一項，告訴自己它像不像妳，也可以記下反例。</p>
-      <div class="tiers" id="tiers"></div>
-    </section>
-
-    <section aria-labelledby="t4">
-      <div class="step"><b>STEP 4</b><h2 id="t4">跨經驗共通模式</h2></div>
-      <ul class="pattern" id="pattern"></ul>
-      <div class="map"><svg id="map" viewBox="-24 -12 448 424" role="img" aria-label="經驗與能力連結圖"></svg></div>
-      <div class="legend"><span>外圈：經驗</span><span>內圈：能力</span><span>實線：有能量</span><span>虛線：被消耗</span></div>
-    </section>
-
-    <section aria-labelledby="t5">
-      <div class="step"><b>STEP 5</b><h2 id="t5">我的 7 天探索任務</h2></div>
-      <p class="hint">選一個最想驗證的優勢，任務可以照建議，也可以改成妳自己的版本。</p>
-      <div class="vchips" id="taskPick"></div>
-      <div class="explore">
-        <label class="field" for="taskText"><span class="req">7 天任務</span><textarea id="taskText" placeholder="例：這 7 天寫一篇經驗分享發到社群，記下大家的反應"></textarea></label>
-        <p class="hint">每天花 2 分鐘記一行：做了什麼／能量 1–5／對方的反應。</p>
-        <div class="days" id="days"></div>
-        <label class="field" for="taskLog">探索紀錄<textarea id="taskLog" placeholder="D1｜分享一篇經驗文／能量 4／3 個人私訊問細節"></textarea></label>
-      </div>
-    </section>
-
-    <section class="result" aria-labelledby="t6">
-      <div class="step"><b>STEP 6</b><h2 id="t6">我的優勢導航圖</h2></div>
-      <p class="hint">整理成一張 9:16 的圖：三項主要優勢假設、各自的證據、共通模式和妳的 7 天任務。</p>
-      <div class="row"><button class="btn btn-plain" id="makeNav" type="button">完整版（自己收藏）</button><button class="btn btn-plain" id="makeNavShare" type="button">分享版（不含經驗細節）</button></div>
-      <img id="navImg" alt="我的優勢導航圖" hidden>
-      <a class="btn btn-main" id="dlNav" hidden>下載圖片</a>
-      <p class="hint" id="navHint" hidden></p>
-    </section>
-
-    <section class="send" aria-labelledby="t7">
-      <div class="step"><b>STEP 7</b><h2 id="t7">傳給 Lynn，換一段回饋</h2></div>
-      <p>傳到 Lynn 的官方 LINE，我會回妳一段簡短回饋。想和其他人一起驗證，可以報名「優勢線索實驗室」工作坊；想一對一細看，可以約<a href="https://ling814078.github.io/linlin/" target="_blank" rel="noopener" style="color:#fff">一對一探索盤點</a>（會收到書面報告）。在 LINE 輸入「實驗室」或「盤點」就可以。</p>
-      <p class="small">會傳出去的只有下面這段文字，經驗卡的細節不會一起送出：</p>
-      <div class="msg" id="sMsg"></div>
-      <div class="row">
-        <a class="btn btn-line" id="sLineBtn" href="#" target="_blank" rel="noopener">開啟 LINE 傳送</a>
-        <button class="btn btn-ghost" id="sCopyBtn" type="button">複製訊息</button>
-      </div>
-      <p class="small">打不開的話：複製訊息，到 LINE 搜尋 ID <b>@514bnkfe</b> 貼上傳送。</p>
-    </section>
-  </div>
-
-  <section class="backup" aria-labelledby="bk">
-    <div class="step"><b>備份</b><h2 id="bk">換手機或清瀏覽器前，先備份</h2></div>
-    <p class="hint">資料只存在這台裝置。備份會包含盤點分數和所有經驗卡，請自己保存，不會傳給任何人。</p>
-    <div class="row">
-      <button class="btn btn-plain" id="bkDl" type="button">下載備份檔</button>
-      <button class="btn btn-plain" id="bkCopy" type="button">複製備份文字</button>
+<a class="skip" href="#main">跳至主要內容</a>
+<nav aria-label="主選單">
+  <div class="in">
+    <a class="logo" href="#top">BeYou <span>Lab.</span></a>
+    <div class="links">
+      <a href="#services">個人服務</a>
+      <a href="#about">關於琳琳</a>
+      <a href="#beyou">認識 BeYou</a>
+      <a href="#events">近期活動</a>
     </div>
-    <textarea id="bkOut" readonly hidden aria-label="備份文字"></textarea>
-    <details>
-      <summary>從備份還原</summary>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
-        <label class="field" for="bkFile">選擇備份檔（.json）<input type="file" id="bkFile" accept=".json,application/json"></label>
-        <label class="field" for="bkIn">或貼上備份文字<textarea id="bkIn" placeholder="貼上之前複製的備份文字"></textarea></label>
-        <button class="btn btn-main" id="bkCheck" type="button">檢查備份</button>
-        <div class="confirm" id="bkConfirm" hidden>
-          <span id="bkSummary"></span>
-          <button type="button" class="btn btn-danger btn-sm" id="bkYes">確定還原</button>
-          <button type="button" class="btn btn-plain btn-sm" id="bkNo">取消</button>
-        </div>
-      </div>
-    </details>
-    <p class="hint" id="bkMsg" aria-live="polite"></p>
-  </section>
+    <a class="navline" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">加 LINE 聊聊</a>
+  </div>
+</nav>
 
-  <footer>
-    <span>BeYou 豐盛實驗室 × Lynn｜IG <a href="https://www.instagram.com/im_lynn33/" target="_blank" rel="noopener">@im_lynn33</a>｜LINE @514bnkfe</span>
-    <span>想跟其他人一起從經驗裡找優勢？LINE 輸入「實驗室」加入優勢線索實驗室等候名單</span>
-    <button type="button" class="linkbtn" id="wipeBtn">清除這台裝置上的所有資料</button>
-    <div class="confirm" id="wipeConfirm" hidden>
-      <span>會刪除盤點分數和所有經驗卡，無法復原。需要的話先在上面備份。</span>
-      <button type="button" class="btn btn-danger btn-sm" id="wipeYes">確定清除</button>
-      <button type="button" class="btn btn-plain btn-sm" id="wipeNo">取消</button>
+<main id="main">
+<section class="hero" id="top">
+  <div class="in">
+    <p class="eyebrow">新竹・連結 × 共學 × 行動</p>
+    <p class="hello">妳好，我是琳琳。</p>
+    <h1>讓妳先被理解，<br>再開始。</h1>
+    <p class="lead">給 30+ 的妳，正在一人工作，或摸索下一段職涯。想整理自己的狀態與方向，可以先做免費盤點、找我個別聊；想認識同行的女性，歡迎來 BeYou 聚會。</p>
+    <p class="proof">新竹實體聚會・已有 80+ 位女性一起交流過</p>
+    <div class="row"><a class="btn btn-main" href="#start">找到我的下一步 ↓</a></div>
+  </div>
+</section>
+
+<section id="start" style="padding-top:0">
+  <div class="in">
+    <h2>妳現在想從哪裡開始？</h2>
+    <div class="paths">
+      <article class="path main">
+        <span class="tag">免費・約 3 分鐘</span>
+        <h3>我想先看看自己現在的狀態</h3>
+        <p>用 8 個生活面向畫出妳的生命之輪，再用「優勢導航」把不同階段的經驗放在一起，找出一直重複出現的能力。資料只存在妳的手機。</p>
+        <a class="go" href="check/">開始免費盤點 →</a>
+      </article>
+      <article class="path">
+        <span class="tag">新竹聚會</span>
+        <h3>我想認識新竹可以真實交流的女性</h3>
+        <p>下一場：11/25（三）｜BeYou 台語讀書會。不用準備自我介紹，帶一件最近在想的事就好。</p>
+        <a class="go" href="#events">看近期活動 ↓</a>
+      </article>
+      <article class="path">
+        <span class="tag">Instagram</span>
+        <h3>我想先看看琳琳是誰</h3>
+        <p>IG @im_lynn33，一人工作和生活裡的實驗紀錄。</p>
+        <a class="go" href="https://www.instagram.com/im_lynn33/" target="_blank" rel="noopener">前往 Instagram ↗</a>
+      </article>
     </div>
-  </footer>
-</div>
+    <p class="sub">已經在一人工作，但不確定卡在哪個環節？可以先做 3 分鐘的 <a href="https://ling814078.github.io/imlynn33/">一人工作卡點診斷</a>。</p>
+  </div>
+</section>
 
-<script>
-(function(){
-'use strict';
-const LINE_ID='@514bnkfe';
-const CAN_DOWNLOAD=true; // Claude 線上版設為 false（檢視器不允許下載）
-const $=id=>document.getElementById(id);
+<section class="alt" id="services">
+  <div class="in">
+    <p class="eyebrow">琳琳的個人服務</p>
+    <h2>先自己看一次，<br>需要時再一起往下整理。</h2>
+    <p class="lead">我不給標準答案，也不做陪跑。工具幫妳先看見現在的自己，對談和工作坊幫妳把看見的東西，變成一個這週就能試的行動。</p>
+    <div class="svc">
+      <article class="card">
+        <span class="lv">第一步・自己來</span>
+        <h3>豐盛人生盤點＋優勢導航</h3>
+        <span class="price">免費</span>
+        <ul>
+          <li>8 個生活面向的生命之輪</li>
+          <li>從不同經驗找出重複出現的能力</li>
+          <li>做完傳到 LINE，換一則整理小建議和完整版盤點表</li>
+        </ul>
+        <a class="btn btn-main" href="check/">開始盤點</a>
+      </article>
+      <article class="card" id="lab">
+        <span class="lv">一起來・6–10 人</span>
+        <h3>優勢線索實驗室</h3>
+        <span class="price">首場籌備中</span>
+        <ul>
+          <li>90 分鐘小團體工作坊，新竹平日下午</li>
+          <li>寫經驗卡、找優勢線索、同伴互相回饋</li>
+          <li>帶走一張優勢導航圖和七天行動實驗</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">LINE 輸入「實驗室」加入等候名單</a>
+      </article>
+      <article class="card">
+        <span class="lv">一對一・線上</span>
+        <h3>一對一探索盤點</h3>
+        <span class="price">NT$888・首波 15 位</span>
+        <ul>
+          <li>60 分鐘對談＋一份書面《探索盤點報告》</li>
+          <li>卡點拆解、2–3 個有證據的優勢線索</li>
+          <li>一個七天內就能試的行動實驗</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://ling814078.github.io/linlin/">了解一對一探索盤點</a>
+      </article>
+    </div>
+  </div>
+</section>
 
-/* ---------- safe storage ---------- */
-const store={
-  get(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}},
-  set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}},
-  del(k){try{localStorage.removeItem(k)}catch(e){}}
-};
+<section id="about">
+  <div class="in about">
+    <div>
+      <p class="eyebrow">關於琳琳</p>
+      <h2>從十年美甲工作，<br>走到女性交流圈。</h2>
+    </div>
+    <div class="txt">
+      <p>10 年的美甲師工作，讓我學會的不只是技術，還有怎麼在一段對話裡真正聽見一個人。</p>
+      <p>我遇過很多女性，她們不缺才華，缺的是一個能說真話、也能被理解的地方。所以我在新竹發起 BeYou，讓大家坐下來聊聊，把過去的經驗說清楚，也聽聽別人怎麼走過類似的路。</p>
+      <p>我也提供個人整理服務，陪妳把自己的狀態、累積的經驗和眼前的卡點說清楚，一起找到可以開始的一步。</p>
+      <p class="quote">我不給標準答案，<br>我陪妳找到自己的答案。</p>
+    </div>
+  </div>
+</section>
 
-/* ---------- tiny DOM builder: all user text goes through textContent ---------- */
-function el(tag,attrs,...kids){
-  const n=document.createElement(tag);
-  if(attrs)for(const k in attrs){const v=attrs[k];if(v==null||v===false)continue;
-    if(k==='class')n.className=v;else if(k==='text')n.textContent=v;else if(k.startsWith('on'))n.addEventListener(k.slice(2),v);else n.setAttribute(k,v===true?'':v)}
-  kids.flat().forEach(c=>{if(c==null||c===false)return;n.appendChild(typeof c==='string'?document.createTextNode(c):c)});
-  return n;
-}
-const SVGNS='http://www.w3.org/2000/svg';
-function sv(tag,attrs,text){const n=document.createElementNS(SVGNS,tag);for(const k in attrs)n.setAttribute(k,attrs[k]);if(text!=null)n.textContent=text;return n}
+<section class="alt" id="beyou">
+  <div class="in">
+    <p class="eyebrow">認識 BeYou</p>
+    <h2>BeYou 是新竹的女性交流圈</h2>
+    <p class="lead">我們透過閱讀、對話和共學，認識不同領域的女性，也一起把想嘗試的事拆成做得到的一步。</p>
+    <div class="ways">
+      <div class="way"><h3>讀書會</h3><p>從一本書出發，聊到自己的生活與工作。</p></div>
+      <div class="way"><h3>跨界對話</h3><p>聽不同女性分享她們的摸索、轉彎與選擇。</p></div>
+      <div class="way"><h3>實作共學</h3><p>帶著真實題目來，帶著一個能動手的步驟離開。</p></div>
+      <div class="way"><h3>資源連結</h3><p>讓彼此的能力與需要，在對的時機遇見。</p></div>
+    </div>
+    <h3 style="margin-top:36px">想參加 BeYou 聚會，三步就好</h3>
+    <div class="steps">
+      <div class="st"><h3>挑一場</h3><p>在下方「近期活動」選一場有興趣的。</p></div>
+      <div class="st"><h3>報名</h3><p>點活動卡上的報名按鈕，或加 LINE 告訴琳琳。</p></div>
+      <div class="st"><h3>帶著近況來</h3><p>不用準備自我介紹，帶一件最近在想的事就好。</p></div>
+    </div>
+  </div>
+</section>
 
-function copyText(btn,getText,fallbackEl){
-  btn.addEventListener('click',async()=>{
-    try{await navigator.clipboard.writeText(getText());btn.textContent='已複製'}
-    catch(e){const r=document.createRange();r.selectNodeContents(fallbackEl);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='已選取，請手動複製'}
-    setTimeout(()=>btn.textContent='複製訊息',2200)});
-}
-function lineUrl(m){return `https://line.me/R/oaMessage/${LINE_ID}/?${encodeURIComponent(m)}`}
-function offerDownload(canvas,name,link,img,hint){
-  const data=canvas.toDataURL('image/png');img.src=data;img.hidden=false;hint.hidden=false;
-  if(CAN_DOWNLOAD&&link)try{canvas.toBlob(b=>{if(!b)return;if(link.dataset.url)URL.revokeObjectURL(link.dataset.url);const u=URL.createObjectURL(b);link.dataset.url=u;link.href=u;link.download=name;link.hidden=false})}catch(e){}
-}
-async function loadFonts(){try{await Promise.all([document.fonts.load('700 40px "Noto Serif TC"'),document.fonts.load('500 30px "Noto Sans TC"'),document.fonts.load('700 30px "Noto Sans TC"')])}catch(e){}}
+<section id="events">
+  <div class="in">
+    <p class="eyebrow">近期活動</p>
+    <h2>下一場聚會</h2>
+    <article class="ev">
+      <h3>11/25（三）｜BeYou 台語讀書會</h3>
+      <p class="meta">時間：待公布｜地點：新竹，詳細地點待公布｜費用：待公布</p>
+      <p>台語講得不溜也沒關係，一起讀、一起聊。</p>
+      <div class="row" style="margin-top:6px"><a class="btn btn-ghost" href="https://claude.ai/artifact/GSJyiezyt8FfpVxGUbSbgR" target="_blank" rel="noopener">看活動詳情與報名 ↗</a></div>
+    </article>
+    <p class="sub">場次會陸續更新，想第一時間收到通知，可以加 LINE。</p>
+  </div>
+</section>
 
-/* =========================================================
-   豐盛盤點（保留 v1 行為與 localStorage key: abundance-scores）
-   ========================================================= */
-const D=[
- {k:'健康',name:'健康身體',q:'我有好好吃飯、睡覺，並感受到身體的能量嗎？',tip:'身體通常是最早舉手、卻最晚被聽見的那一個。',act:'這週挑一天提早 30 分鐘上床，不補工作、不滑手機。',card:'為自己做的一件事'},
- {k:'家庭',name:'家庭關係',q:'與家人相處時，我感到安全、被理解或被支持嗎？',tip:'家裡的角色很難放下，但可以先劃一條小界線。',act:'找一件「其實不一定要妳做」的家事，交出去一次。',card:'為自己做的一件事'},
- {k:'伴侶',name:'伴侶親密',q:'在情感關係裡，我能真實做自己，並感受到滋養嗎？',tip:'親密感常常是被忙碌擠掉了，不是消失了。',act:'一次 10 分鐘、不談孩子和帳單的對話。單身的話，約自己好好吃一頓晚餐。',card:'為自己做的一件事'},
- {k:'朋友',name:'朋友社群',q:'我身邊有懂我、能互相承接、一起成長的夥伴嗎？',tip:'妳缺的可能不是朋友，而是一個能說真話的地方。',act:'傳訊息給一位很久沒聊的人，只問一句「最近好嗎？」',card:'認識一個新朋友'},
- {k:'金錢',name:'金錢財富',q:'我的財務狀態，能支撐我想選擇的生活方式嗎？',tip:'對錢的焦慮常常來自「看不清楚」，不是「不夠多」。',act:'花 15 分鐘寫下上個月最大的 3 筆支出，只看，不批判。',card:'參加一場活動'},
- {k:'工作',name:'工作事業',q:'我正在做的事，能發揮能力並讓我有成就感嗎？',tip:'低分不一定代表要換工作，有時是在做的事跟在乎的事脫節了。',act:'寫下最近最有成就感的一件事，想想它為什麼讓妳有感覺。',card:'參加一場活動'},
- {k:'成長',name:'自我成長',q:'我有留時間給自己的學習、探索與內在整理嗎？',tip:'不是妳不上進，是時間都給了別人。',act:'在行事曆上鎖 30 分鐘，只留給自己學一樣想學的東西。',card:'參加一場活動'},
- {k:'快樂',name:'每日快樂',q:'在日常裡，我還能感受到純粹的喜悅與放鬆嗎？',tip:'快樂常常不是被奪走，是被「等一下再說」一直延後。',act:'做一件純粹好玩、沒有任何目的的小事。',card:'為自己做的一件事'}
-];
-const SAMPLE=[6,7,5,4,3,7,5,6];
-let scores=SAMPLE.slice(),isSample=true,manual=null;
-const savedScores=store.get('abundance-scores');
-if(Array.isArray(savedScores)&&savedScores.length===8&&savedScores.every(v=>Number.isInteger(v)&&v>=1&&v<=10)){scores=savedScores;isSample=false}
-const saveScores=()=>store.set('abundance-scores',scores);
+<section class="alt" id="faq">
+  <div class="in">
+    <p class="eyebrow">常見問題</p>
+    <h2>妳可能想問的</h2>
+    <div class="faq">
+      <details><summary>個人服務和 BeYou 活動，怎麼選？</summary><p>想針對自己的狀態、能力或工作方向整理，可以先做免費盤點，再看要參加優勢線索實驗室或一對一探索盤點。想認識同伴、聽不同經驗，可以從 BeYou 活動開始。</p></details>
+      <details><summary>優勢線索實驗室和一對一探索盤點差在哪？</summary><p>實驗室是 6–10 人一起做的 90 分鐘工作坊，有同伴互相回饋；一對一只看妳一個人，60 分鐘，會多一份書面報告。</p></details>
+      <details><summary>還沒有明確方向，也適合來嗎？</summary><p>適合。帶著目前的狀態或困惑來就好，不需要完整計畫。</p></details>
+      <details><summary>一定要是一人工作者才能參加嗎？</summary><p>不用。只要妳是 30+、正在探索工作或生活的新方向，都歡迎。</p></details>
+      <details><summary>第一次加 LINE，不知道要說什麼？</summary><p>可以直接傳「盤點」「實驗室」或「活動」，也可以寫：「嗨琳琳，我目前在＿＿，想了解＿＿。」</p></details>
+      <details><summary>費用怎麼算？</summary><p>免費盤點可以直接使用。一對一探索盤點首波體驗價 NT$888；優勢線索實驗室與 BeYou 活動，依當次公告。</p></details>
+    </div>
+  </div>
+</section>
 
-D.forEach((d,i)=>{
-  const out=el('output',{id:'o'+i,for:'r'+i});
-  const r=el('input',{type:'range',id:'r'+i,min:1,max:10,step:1,'aria-label':d.name+'分數'});r.value=scores[i];
-  r.addEventListener('input',()=>{scores[i]=+r.value;if(isSample){isSample=false;$('sampleTag').hidden=true}manual=null;saveScores();render()});
-  $('dims').appendChild(el('div',{class:'dim',id:'dim-'+i},el('label',{for:'r'+i,text:String(i+1).padStart(2,'0')+'　'+d.name}),out,el('span',{class:'q',text:d.q}),r));
-  $('chips').appendChild(el('button',{type:'button',class:'chip',id:'c'+i,text:d.k,onclick:()=>{const cur=lowest().slice();if(cur.includes(i))return;manual=[cur[1],i];render()}}));
-});
-if(!isSample)$('sampleTag').hidden=true;
-function lowest(){if(manual&&manual.length===2)return manual;return scores.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]||a[1]-b[1]).slice(0,2).map(x=>x[1])}
-function pt(cx,cy,r,i){const a=(-90+i*45)*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
-function drawWheel(){
-  const svg=$('wheel'),cx=200,cy=190,R=130,low=lowest();svg.textContent='';
-  for(let ring=2;ring<=10;ring+=2)svg.appendChild(sv('polygon',{points:D.map((_,i)=>pt(cx,cy,R*ring/10,i).join(',')).join(' '),fill:'none',stroke:'var(--line)','stroke-width':1}));
-  D.forEach((_,i)=>{const [x,y]=pt(cx,cy,R,i);svg.appendChild(sv('line',{x1:cx,y1:cy,x2:x,y2:y,stroke:'var(--line)','stroke-width':1}))});
-  svg.appendChild(sv('polygon',{points:scores.map((v,i)=>pt(cx,cy,R*v/10,i).join(',')).join(' '),fill:'var(--accent)','fill-opacity':.28,stroke:'var(--accent)','stroke-width':2.5,'stroke-linejoin':'round'}));
-  scores.forEach((v,i)=>{const [x,y]=pt(cx,cy,R*v/10,i),L=low.includes(i);svg.appendChild(sv('circle',{cx:x,cy:y,r:L?6:4,fill:L?'var(--low)':'var(--accent)'}))});
-  D.forEach((d,i)=>{const [x,y]=pt(cx,cy,R+30,i),L=low.includes(i);
-    svg.appendChild(sv('text',{x,y,'text-anchor':Math.abs(x-cx)<5?'middle':(x>cx?'start':'end'),'dominant-baseline':'middle','font-size':15,'font-weight':L?700:500,fill:L?'var(--low)':'var(--fg)','font-family':'var(--f-body)'},`${d.k} ${scores[i]}`))});
-}
-function message(){const low=lowest();return `盤點：${low.map(i=>D[i].k).join('、')}\n我的分數：${D.map((d,i)=>d.k+scores[i]).join('、')}`}
-function render(){
-  const low=lowest();
-  D.forEach((d,i)=>{$('o'+i).textContent=scores[i];$('dim-'+i).classList.toggle('is-low',low.includes(i));$('c'+i).setAttribute('aria-pressed',low.includes(i))});
-  drawWheel();
-  const tips=$('tips');tips.textContent='';
-  low.forEach(i=>{const d=D[i];tips.appendChild(el('article',{class:'tip'},el('h3',null,d.name,el('span',{text:scores[i]+' / 10'})),el('p',{text:d.tip}),el('p',{class:'act',text:'這週試試：'+d.act}),el('p',{class:'card',text:'對應完整版的行動卡：'+d.card})))});
-  const m=message();$('msg').textContent=m;$('lineBtn').href=lineUrl(m);
-  $('resultImg').hidden=true;$('imgHint').hidden=true;$('dlCheck').hidden=true;
-  const dir=low.filter(i=>i===5||i===6);
-  $('nextWhy').textContent=dir.length?`妳的「${dir.map(i=>D[i].k).join('、')}」分數偏低，常常不是能力不夠，而是還沒找到用得上的地方。先找出妳跨經驗重複出現的優勢。`:'把散在不同人生階段的經驗放在一起，找出一直重複出現的能力。';
-}
-copyText($('copyBtn'),message,$('msg'));
+<section class="cta">
+  <div class="in">
+    <h2>先帶著真實的自己來，<br>我們再一起整理。</h2>
+    <p>想了解個人服務，或問下一場 BeYou 活動，都可以告訴我妳現在最在意的一件事。</p>
+    <div class="row" style="justify-content:center">
+      <a class="btn btn-line" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">加 LINE 聊聊</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/im_lynn33/" target="_blank" rel="noopener">Instagram @im_lynn33</a>
+    </div>
+  </div>
+</section>
+</main>
 
-function canvasBase(W,H){const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
-  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#f8f2ea');g.addColorStop(1,'#ead8c5');x.fillStyle=g;x.fillRect(0,0,W,H);
-  x.fillStyle='rgba(176,137,104,.10)';x.beginPath();x.arc(960,170,260,0,7);x.fill();x.beginPath();x.arc(90,1780,300,0,7);x.fill();return [c,x]}
-const C={fg:'#3d3530',mu:'#6f6058',ac:'#b08968',ln:'#dccbb9',lo:'#a0583f',card:'rgba(255,255,255,.75)',serif:'"Noto Serif TC","Songti TC",serif',sans:'"Noto Sans TC","PingFang TC",sans-serif'};
-function rr(x,X,Y,w,h,r){x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+w,Y,X+w,Y+h,r);x.arcTo(X+w,Y+h,X,Y+h,r);x.arcTo(X,Y+h,X,Y,r);x.arcTo(X,Y,X+w,Y,r);x.closePath()}
-function wrapText(x,t,X,Y,maxW,lh,maxLines){let line='',yy=Y,n=1;const chars=[...String(t)];
-  for(let k=0;k<chars.length;k++){const ch=chars[k];if(ch==='\n'||x.measureText(line+ch).width>maxW){
-      if(maxLines&&n>=maxLines){while(line&&x.measureText(line+'…').width>maxW)line=line.slice(0,-1);x.fillText(line+'…',X,yy);return yy}
-      x.fillText(line,X,yy);line=ch==='\n'?'':ch;yy+=lh;n++}else line+=ch}
-  x.fillText(line,X,yy);return yy}
-function stamp(label){const n=new Date();return `${n.getFullYear()}.${String(n.getMonth()+1).padStart(2,'0')} ${label}`}
-function brandFooter(x,W,line1){x.textAlign='center';x.fillStyle=C.fg;x.font=`700 34px ${C.sans}`;x.fillText(line1,W/2,1800);
-  x.fillStyle=C.lo;x.font=`700 34px ${C.sans}`;x.fillText('IG @im_lynn33',W/2,1852);
-  x.fillStyle=C.mu;x.font=`500 26px ${C.sans}`;x.fillText('LINE 搜尋 @514bnkfe｜BeYou 豐盛實驗室',W/2,1895)}
-
-$('makeImg').addEventListener('click',async()=>{
-  await loadFonts();
-  const W=1080,H=1920,[c,x]=canvasBase(W,H);
-  const low=lowest(),top=scores.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]||a[1]-b[1])[0][1],avg=(scores.reduce((a,b)=>a+b,0)/8).toFixed(1);
-  const KW={健康:'回到身體',家庭:'劃一條線',伴侶:'重新靠近',朋友:'找到同伴',金錢:'看清楚',工作:'找回成就感',成長:'留給自己',快樂:'好好玩'};
-  x.textAlign='center';x.fillStyle=C.ac;x.font=`500 30px ${C.sans}`;x.fillText(`BeYou 豐盛實驗室 × Lynn　｜　${stamp('盤點')}`,W/2,130);
-  x.fillStyle=C.fg;x.font=`700 88px ${C.serif}`;x.fillText('我的生命之輪',W/2,250);
-  x.fillStyle=C.mu;x.font=`500 32px ${C.sans}`;x.fillText('這個月，我的豐盛關鍵字',W/2,345);
-  x.fillStyle=C.lo;x.font=`700 112px ${C.serif}`;x.fillText(`「${KW[D[low[0]].k]}」`,W/2,480);
-  const cx=W/2,cy=880,R=280,P=(r,i)=>{const a=(-90+i*45)*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]};
-  x.fillStyle=C.card;x.beginPath();x.arc(cx,cy,R+20,0,7);x.fill();x.strokeStyle=C.ln;x.lineWidth=2;
-  for(let ring=2;ring<=10;ring+=2){x.beginPath();D.forEach((_,i)=>{const [a,b]=P(R*ring/10,i);i?x.lineTo(a,b):x.moveTo(a,b)});x.closePath();x.stroke()}
-  D.forEach((_,i)=>{const [a,b]=P(R,i);x.beginPath();x.moveTo(cx,cy);x.lineTo(a,b);x.stroke()});
-  const rg=x.createRadialGradient(cx,cy,0,cx,cy,R);rg.addColorStop(0,'rgba(160,88,63,.45)');rg.addColorStop(1,'rgba(176,137,104,.28)');
-  x.beginPath();scores.forEach((v,i)=>{const [a,b]=P(R*v/10,i);i?x.lineTo(a,b):x.moveTo(a,b)});x.closePath();x.fillStyle=rg;x.fill();x.strokeStyle=C.ac;x.lineWidth=6;x.lineJoin='round';x.stroke();
-  scores.forEach((v,i)=>{const [a,b]=P(R*v/10,i),L=low.includes(i);x.beginPath();x.arc(a,b,L?15:10,0,7);x.fillStyle=L?C.lo:C.ac;x.fill();x.lineWidth=4;x.strokeStyle='#fff';x.stroke()});
-  D.forEach((d,i)=>{const [a,b]=P(R+70,i),L=low.includes(i);x.textAlign=Math.abs(a-cx)<5?'center':(a>cx?'left':'right');x.textBaseline='middle';x.font=`${L?700:500} 36px ${C.sans}`;x.fillStyle=L?C.lo:C.fg;x.fillText(`${d.k} ${scores[i]}`,a,b)});
-  x.textBaseline='alphabetic';
-  const cards=[['最支撐我',`${D[top].k} ${scores[top]}`,C.fg],['想先照顧',low.map(i=>D[i].k).join('、'),C.lo],['平均',avg,C.fg]],cw=300,gap=30,sx=(W-cw*3-gap*2)/2;
-  cards.forEach((cd,i)=>{const X=sx+i*(cw+gap);x.fillStyle=C.card;rr(x,X,1300,cw,170,28);x.fill();x.textAlign='center';x.fillStyle=C.mu;x.font=`500 28px ${C.sans}`;x.fillText(cd[0],X+cw/2,1360);x.fillStyle=cd[2];x.font=`700 50px ${C.serif}`;x.fillText(cd[1],X+cw/2,1435)});
-  x.fillStyle=C.card;rr(x,70,1510,W-140,230,32);x.fill();x.textAlign='left';x.fillStyle=C.ac;x.font=`700 30px ${C.sans}`;x.fillText('這週的小練習',120,1575);
-  x.fillStyle=C.fg;x.font=`500 36px ${C.sans}`;wrapText(x,D[low[0]].act,120,1640,W-240,54,2);
-  brandFooter(x,W,'3 分鐘，看見妳的豐盛人生');
-  offerDownload(c,'BeYou-生命之輪.png',$('dlCheck'),$('resultImg'),$('imgHint'));
-});
-
-/* =========================================================
-   優勢導航 v2
-   ========================================================= */
-const KEY1='strength-data',KEY2='beyou-strengths-v2';
-const VERBS=['文字表達','口語表達','教學引導','陪伴諮詢','銷售推薦','社群經營','人脈連結','活動企劃','專案管理','視覺美感','數據分析','動手製作'];
-const EXP={
- '文字表達':'寫一篇 300 字的經驗分享發到社群，記下留言、私訊和收藏的反應。',
- '口語表達':'錄一支 1 分鐘口播，或在小聚上分享 5 分鐘，請 2 個人告訴妳哪一段最有感。',
- '教學引導':'教一個人一件妳會的事，結束後問她：「學到最有用的是什麼？」',
- '陪伴諮詢':'約一個人聊 30 分鐘，幫她釐清一個卡住的問題，最後問她願不願意再聊一次。',
- '銷售推薦':'推薦一樣妳真心喜歡的東西給 3 個人，記下誰被打動、為什麼。',
- '社群經營':'在妳所在的群組發起一個小話題，記下有多少人回應、聊了多久。',
- '人脈連結':'介紹兩個妳覺得應該認識的人互相認識，觀察後來發生什麼。',
- '活動企劃':'規劃一場 3–5 人的小聚，從邀約到結束都由妳安排，記下哪裡最順手。',
- '專案管理':'挑一件拖很久的事，拆成步驟排進 7 天並完成，記下卡住的地方。',
- '視覺美感':'用妳的美感幫一個人或一個角落做一次改變，拍前後對照發出去。',
- '數據分析':'把一件事的數字整理成表（家計、社群數據都可以），找出 1 個發現講給別人聽。',
- '動手製作':'做一件小作品送人，或標價放上社群，看有沒有人來問。'
-};
-const DOMAINS=['工作／職涯','興趣／副業','家庭／生活角色','社群／學習／志工','其他'];
-const ENERGY=[['up','有能量'],['mid','普通'],['down','被消耗']];
-const TIER={hypo:{name:'有證據的優勢假設',cls:'p-hypo',color:'var(--low)',desc:'至少 2 段經驗擅長 4 分以上，而且寫了實際行為和結果。有別人的回饋，說服力會更高。'},
-  explore:{name:'值得探索的優勢',cls:'p-explore',color:'var(--accent)',desc:'妳喜歡、做的時候有能量，但證據還不夠，值得刻意多試幾次。'},
-  clue:{name:'初步線索',cls:'p-clue',color:'var(--muted)',desc:'出現過，還需要更多經驗確認。'}};
-const LIMIT={title:40,text:400,feedback:200,verb:12};
-
-const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
-const str=(v,max)=>typeof v==='string'?v.slice(0,max):'';
-const lvl=v=>Number.isInteger(v)&&v>=1&&v<=5?v:0;
-function cleanCard(c){c=c&&typeof c==='object'?c:{};
-  return {id:str(c.id,40)||uid(),title:str(c.title,LIMIT.title),domain:DOMAINS.includes(c.domain)?c.domain:'',situation:str(c.situation,LIMIT.text),action:str(c.action,LIMIT.text),result:str(c.result,LIMIT.text),feedback:str(c.feedback,LIMIT.feedback),
-    verbs:(Array.isArray(c.verbs)?c.verbs:[]).filter(v=>typeof v==='string'&&v.trim()).map(v=>v.slice(0,LIMIT.verb)).slice(0,3),like:lvl(c.like),skill:lvl(c.skill),energy:['up','mid','down'].includes(c.energy)?c.energy:''}}
-function cleanState(s){s=s&&typeof s==='object'?s:{};const review={};
-  if(s.review&&typeof s.review==='object')for(const k of Object.keys(s.review).slice(0,40)){const r=s.review[k]||{};review[k.slice(0,LIMIT.verb)]={status:['confirmed','revise','rejected'].includes(r.status)?r.status:'',rename:str(r.rename,20),note:str(r.note,LIMIT.feedback),counter:str(r.counter,LIMIT.text)}}
-  const t=s.task||{};
-  return {version:2,cards:(Array.isArray(s.cards)?s.cards:[]).slice(0,30).map(cleanCard),review,
-    task:{verb:str(t.verb,LIMIT.verb),text:str(t.text,LIMIT.text),days:Array.isArray(t.days)&&t.days.length===7?t.days.map(Boolean):Array(7).fill(false),log:str(t.log,2000)}}}
-function sampleState(){return cleanState({cards:[
- {title:'接手混亂的專案',domain:'工作／職涯',situation:'前同事離職，專案進度落後一個月',action:'把待辦列成一張表、重排優先順序，每週跟大家對一次進度',result:'兩週內趕上進度，這套流程後來被部門沿用',feedback:'主管說交給我很放心',verbs:['專案管理','數據分析'],like:2,skill:4,energy:'down'},
- {title:'幫朋友做婚禮小物',domain:'興趣／副業',situation:'朋友預算有限，又想要特別一點',action:'自己設計、找材料，做了 80 份小物',result:'賓客一直問在哪買，之後有 3 個人來詢價',feedback:'朋友說「妳真的可以拿去賣」',verbs:['動手製作','視覺美感'],like:5,skill:4,energy:'up'},
- {title:'規劃全家出國 7 天',domain:'家庭／生活角色',situation:'長輩和小孩一起出門，每個人需求都不一樣',action:'先問每個人最想做的一件事，再排出每天的節奏和備案',result:'全程沒有人抱怨，回來大家說還想再去',feedback:'家人說跟我出門最輕鬆',verbs:['活動企劃','專案管理'],like:4,skill:4,energy:'up'},
- {title:'讀書會沒人帶',domain:'社群／學習／志工',situation:'大家都想讀，但沒人願意開頭',action:'主動排每週主題、提醒時間、帶開場',result:'連續 8 週沒有中斷，成員從 5 人變 12 人',feedback:'',verbs:['活動企劃','社群經營'],like:5,skill:4,energy:'up'}]})}
-function migrateV1(v1){const doms=DOMAINS.slice(0,4);
-  const cards=(Array.isArray(v1.ev)?v1.ev:[]).slice(0,4).map((e,i)=>{if(!e||typeof e.t!=='string'||!e.t.trim())return null;
-    return {title:doms[i]+'的經驗',domain:doms[i],action:e.t,feedback:typeof e.f==='string'?e.f:'',verbs:Array.isArray(e.v)?e.v:[],energy:e.e==='drain'?'down':(e.e==='energy'?'up':'')}}).filter(Boolean);
-  return cleanState({cards,task:{verb:typeof v1.pick==='string'?v1.pick:'',days:v1.days,log:v1.log}})}
-
-let S,sSample=false;
-(function boot(){
-  const v2=store.get(KEY2);
-  if(v2&&v2.version===2){S=cleanState(v2);return}
-  const v1=store.get(KEY1);
-  if(v1&&Array.isArray(v1.ev)){S=migrateV1(v1);store.set(KEY2,S);$('migrateNote').hidden=false;return}
-  S=sampleState();sSample=true;
-})();
-$('sSample').hidden=!sSample;
-
-let saveTimer=null;
-function persist(){if(sSample)return;clearTimeout(saveTimer);saveTimer=setTimeout(()=>{const ok=store.set(KEY2,S);$('saveState').textContent=ok?'已存在這台裝置':'這個瀏覽器無法儲存，關掉頁面後內容會消失'},250)}
-function touch(){if(sSample){sSample=false;$('sSample').hidden=true}persist()}
-
-/* ---------- cards ---------- */
-let editingId=null,deletingId=null;
-const filled=c=>!!(c.title.trim()||c.situation.trim()||c.action.trim()||c.result.trim());
-function renderCards(){
-  const box=$('cards');box.textContent='';
-  S.cards.forEach((c,idx)=>box.appendChild(c.id===editingId?cardEditor(c,idx):cardSummary(c,idx)));
-  const n=S.cards.filter(filled).length;
-  $('cardCount').textContent=n>=3?`已寫 ${n} 段經驗`:`已寫 ${n} 段，建議至少 3 段`;
-}
-function cardSummary(c,idx){
-  const meta=el('div',{class:'xmeta'},
-    c.domain?el('span',{class:'tag',text:c.domain}):null,
-    c.verbs.map(v=>el('span',{class:'tag v',text:v})),
-    c.energy?el('span',{class:'tag '+(c.energy==='up'?'up':c.energy==='down'?'down':''),text:ENERGY.find(e=>e[0]===c.energy)[1]}):null,
-    c.like?el('span',{class:'tag',text:'喜歡 '+c.like}):null,
-    c.skill?el('span',{class:'tag',text:'擅長 '+c.skill}):null);
-  const sum=[c.action&&('做了：'+c.action),c.result&&('結果：'+c.result)].filter(Boolean).join('　');
-  const node=el('article',{class:'xcard'},
-    el('div',{class:'xhead'},el('h3',{text:c.title.trim()||'未命名的經驗 '+(idx+1)})),
-    meta, sum?el('p',{class:'xsum',text:sum}):el('p',{class:'xsum',text:'還沒寫內容'}),
-    deletingId===c.id
-      ?el('div',{class:'confirm'},el('span',{text:'確定刪除這張經驗卡？'}),
-          el('button',{type:'button',class:'btn btn-danger btn-sm',onclick:()=>{S.cards=S.cards.filter(x=>x.id!==c.id);deletingId=null;touch();renderCards();renderAnalysis()}},'刪除'),
-          el('button',{type:'button',class:'btn btn-plain btn-sm',onclick:()=>{deletingId=null;renderCards()}},'取消'))
-      :el('div',{class:'xactions'},
-          el('button',{type:'button',class:'btn btn-plain btn-sm',onclick:()=>{editingId=c.id;deletingId=null;renderCards();focusEditor()}},'編輯'),
-          el('button',{type:'button',class:'btn btn-plain btn-sm',onclick:()=>{deletingId=c.id;renderCards()}},'刪除')));
-  return node;
-}
-function focusEditor(){const f=$('f-title');if(f){f.focus({preventScroll:true});f.closest('.xcard').scrollIntoView({block:'start',behavior:'smooth'})}}
-function bindText(c,key,input){input.value=c[key];input.addEventListener('input',()=>{c[key]=input.value.slice(0,+input.getAttribute('maxlength')||LIMIT.text);touch();renderAnalysis()})}
-function cardEditor(c){
-  const f=(id,label,node,req)=>el('label',{class:'field',for:id},el('span',{class:req?'req':null,text:label}),node);
-  const title=el('input',{type:'text',id:'f-title',maxlength:LIMIT.title,placeholder:'例：規劃全家出國 7 天'});bindText(c,'title',title);
-  const dom=el('select',{id:'f-domain'},el('option',{value:'',text:'選擇領域（選填）'}),DOMAINS.map(d=>el('option',{value:d,text:d})));dom.value=c.domain;
-  dom.addEventListener('change',()=>{c.domain=DOMAINS.includes(dom.value)?dom.value:'';touch();renderAnalysis()});
-  const ta=(id,key,ph)=>{const t=el('textarea',{id,maxlength:LIMIT.text,placeholder:ph});bindText(c,key,t);return t};
-  const fb=el('input',{type:'text',id:'f-feedback',maxlength:LIMIT.feedback,placeholder:'例：朋友說「找妳就對了」'});bindText(c,'feedback',fb);
-  const verbList=[...new Set([...VERBS,...c.verbs])];
-  const vbox=el('div',{class:'vchips',role:'group','aria-label':'能力動詞'});
-  verbList.forEach(v=>vbox.appendChild(el('button',{type:'button',class:'vchip','aria-pressed':String(c.verbs.includes(v)),text:v,onclick:e=>{
-    const i=c.verbs.indexOf(v);if(i>=0)c.verbs.splice(i,1);else{c.verbs.push(v);if(c.verbs.length>3)c.verbs.shift()}
-    vbox.querySelectorAll('.vchip').forEach(b=>b.setAttribute('aria-pressed',String(c.verbs.includes(b.textContent))));touch();renderAnalysis()}})));
-  const scale=(key,lo,hi)=>{const box=el('div',{class:'scale5',role:'group'});
-    for(let n=1;n<=5;n++)box.appendChild(el('button',{type:'button','aria-pressed':String(c[key]===n),'aria-label':n+' 分',text:String(n),onclick:()=>{c[key]=c[key]===n?0:n;box.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-pressed',String(c[key]===j+1)));touch();renderAnalysis()}}));
-    box.appendChild(el('small',{text:`1 ${lo}・5 ${hi}`}));return box};
-  const seg=el('div',{class:'seg',role:'group','aria-label':'能量感受'});
-  ENERGY.forEach(([k,label])=>seg.appendChild(el('button',{type:'button','aria-pressed':String(c.energy===k),text:label,onclick:()=>{c.energy=c.energy===k?'':k;seg.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-pressed',String(c.energy===ENERGY[j][0])));touch();renderAnalysis()}})));
-  return el('article',{class:'xcard editing'},
-    f('f-title','經驗名稱',title,true), f('f-domain','領域',dom),
-    f('f-situation','情境：當時發生什麼事？',ta('f-situation','situation','例：長輩和小孩一起出門，每個人需求都不一樣')),
-    f('f-action','實際行為：妳具體做了什麼？',ta('f-action','action','例：先問每個人最想做的一件事，再排出每天的節奏'),true),
-    f('f-result','結果：後來怎麼樣？',ta('f-result','result','例：全程沒有人抱怨，回來大家說還想再去'),true),
-    f('f-feedback','他人回饋：別人怎麼說？（選填）',fb),
-    el('div',{class:'field'},el('span',{class:'req',text:'能力動詞（選 1–3 個）'}),vbox),
-    el('div',{class:'field'},el('span',{class:'req',text:'喜歡程度'}),scale('like','不喜歡','很喜歡')),
-    el('div',{class:'field'},el('span',{class:'req',text:'擅長程度'}),scale('skill','不太會','很擅長')),
-    el('div',{class:'field'},el('span',{class:'req',text:'做的時候的能量'}),seg),
-    el('div',{class:'xactions'},el('button',{type:'button',class:'btn btn-main btn-sm',onclick:()=>{editingId=null;renderCards()}},'完成這張'),
-      el('button',{type:'button',class:'btn btn-plain btn-sm',onclick:()=>{deletingId=c.id;editingId=null;renderCards()}},'刪除')));
-}
-$('addCard').addEventListener('click',()=>{if(S.cards.length>=30){$('saveState').textContent='最多 30 張經驗卡';return}
-  const c=cleanCard({});S.cards.push(c);editingId=c.id;deletingId=null;touch();renderCards();renderAnalysis();focusEditor()});
-$('sClear').addEventListener('click',()=>{S=cleanState({cards:[]});const c=cleanCard({});S.cards.push(c);editingId=c.id;sSample=false;$('sSample').hidden=true;persist();renderCards();renderAnalysis();focusEditor()});
-
-/* ---------- analysis ---------- */
-const hasEvidence=c=>c.skill>=4&&c.action.trim()&&c.result.trim();
-function analyze(){
-  const cards=S.cards.filter(filled),m=new Map();
-  cards.forEach(c=>c.verbs.forEach(v=>{if(!m.has(v))m.set(v,[]);m.get(v).push(c)}));
-  const items=[...m.entries()].map(([v,cs])=>{
-    const strong=cs.filter(hasEvidence),fb=cs.filter(c=>c.feedback.trim()).length,up=cs.filter(c=>c.energy==='up').length,down=cs.filter(c=>c.energy==='down').length,
-      liked=cs.filter(c=>c.like>=4&&c.energy==='up').length,doms=[...new Set(cs.map(c=>c.domain).filter(Boolean))],review=S.review[v]||{};
-    const tier=strong.length>=2?'hypo':liked>=1?'explore':'clue';
-    return {v,cards:cs,strong,fb,up,down,liked,doms,tier,review,label:review.status==='revise'&&review.rename?review.rename:v};
-  });
-  const rank={hypo:0,explore:1,clue:2};
-  items.sort((a,b)=>rank[a.tier]-rank[b.tier]||(b.review.status==='confirmed')-(a.review.status==='confirmed')||(b.up-b.down)-(a.up-a.down)||b.strong.length-a.strong.length||b.fb-a.fb||b.cards.length-a.cards.length);
-  const active=items.filter(i=>i.review.status!=='rejected'),rejected=items.filter(i=>i.review.status==='rejected');
-  const top=active.filter(i=>i.tier!=='clue').slice(0,3);
-  return {cards,items,active,rejected,top};
-}
-function patterns(a){
-  const out=[];if(a.cards.length<2){out.push('再多寫幾段經驗，共通模式才會出現。');return out}
-  const cross=a.active.filter(i=>i.tier!=='clue'&&(i.doms.length>=2||(!i.doms.length&&i.cards.length>=2)));
-  if(cross.length){const i=cross[0];out.push(i.doms.length>=2?`「${i.label}」出現在${i.doms.join('、')}等不同領域，是妳跨經驗一直在用的能力。`:`「${i.label}」在 ${i.cards.length} 段不同經驗裡都出現。`)}
-  const pairs=new Map();a.cards.forEach(c=>{const vs=[...c.verbs].sort();for(let i=0;i<vs.length;i++)for(let j=i+1;j<vs.length;j++){const k=vs[i]+'＋'+vs[j];pairs.set(k,(pairs.get(k)||0)+1)}});
-  const bestPair=[...pairs.entries()].sort((x,y)=>y[1]-x[1])[0];
-  if(bestPair&&bestPair[1]>=2){const [p,q]=bestPair[0].split('＋');out.push(`「${p}」和「${q}」常一起出現（${bestPair[1]} 段經驗），妳的強項可能是兩者的組合。`)}
-  const upC=new Map();a.cards.filter(c=>c.energy==='up').forEach(c=>c.verbs.forEach(v=>upC.set(v,(upC.get(v)||0)+1)));
-  const bestUp=[...upC.entries()].sort((x,y)=>y[1]-x[1])[0];
-  if(bestUp&&bestUp[1]>=2)out.push(`做起來有能量的經驗，多半和「${bestUp[0]}」有關。`);
-  const drain=a.items.find(i=>i.down>=1&&i.down>=i.up&&i.strong.length>=1);
-  if(drain)out.push(`「${drain.label}」妳做得到，但常常讓妳消耗。可以留著用，不一定要當成方向。`);
-  if(!out.length)out.push('目前的經驗還沒有明顯重複的模式。試著補寫實際行為和結果，或多加一段不同領域的經驗。');
-  return out;
-}
-
-function renderMatrix(a){
-  const wrap=$('matrixWrap');wrap.textContent='';
-  if(!a.cards.length||!a.items.length){wrap.appendChild(el('p',{class:'hint',style:'padding:14px',text:'寫下經驗、選好能力動詞後，證據表會出現在這裡。'}));$('detail').hidden=true;return}
-  const verbs=a.items.map(i=>i.v);
-  const head=el('tr',null,el('th',{scope:'col',text:'經驗'}),verbs.map(v=>el('th',{scope:'col'},el('button',{type:'button',text:v,onclick:()=>showDetail(v)}))));
-  const rows=a.cards.map((c,i)=>el('tr',null,el('th',{scope:'row',text:c.title.trim()||'經驗 '+(i+1)}),verbs.map(v=>{const has=c.verbs.includes(v),s=has&&hasEvidence(c);
-    return el('td',{class:s?'s':has?'w':'','aria-label':s?'有證據':has?'有選':'無',text:s?'●':has?'○':''})})));
-  wrap.appendChild(el('table',{class:'matrix'},el('thead',null,head),el('tbody',null,rows)));
-  if(openDetail&&verbs.includes(openDetail))showDetail(openDetail,true);else $('detail').hidden=true;
-}
-let openDetail=null;
-function showDetail(v,silent){
-  openDetail=v;const a=analyze(),item=a.items.find(i=>i.v===v),box=$('detail');box.textContent='';if(!item){box.hidden=true;return}
-  box.appendChild(el('h3',null,`「${v}」的證據`));
-  box.appendChild(el('p',{class:'hint',text:`${TIER[item.tier].name}・出現在 ${item.cards.length} 段經驗・${item.fb} 則他人回饋`}));
-  item.cards.forEach((c,i)=>box.appendChild(el('div',{class:'ev'},el('b',{text:c.title.trim()||'未命名的經驗'}),
-    c.situation&&el('p',null,el('span',{class:'lbl',text:'情境：'}),c.situation),
-    c.action&&el('p',null,el('span',{class:'lbl',text:'行為：'}),c.action),
-    c.result&&el('p',null,el('span',{class:'lbl',text:'結果：'}),c.result),
-    c.feedback&&el('p',null,el('span',{class:'lbl',text:'他人回饋：'}),c.feedback),
-    el('p',{class:'lbl',text:[c.like?'喜歡 '+c.like:'喜歡未填',c.skill?'擅長 '+c.skill:'擅長未填',c.energy?ENERGY.find(e=>e[0]===c.energy)[1]:'能量未填'].join('・')}))));
-  if(item.review.counter)box.appendChild(el('div',{class:'ev'},el('b',{text:'妳記下的反例'}),el('p',{text:item.review.counter})));
-  box.appendChild(el('button',{type:'button',class:'btn btn-plain btn-sm',onclick:()=>{openDetail=null;box.hidden=true}},'收起'));
-  box.hidden=false;if(!silent)box.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-
-let openReview=null;
-function renderTiers(a){
-  const box=$('tiers');box.textContent='';
-  if(!a.items.length){box.appendChild(el('p',{class:'notice',text:'還沒有能力標籤。先在經驗卡裡選能力動詞。'}));return}
-  ['hypo','explore','clue'].forEach(t=>{const list=a.active.filter(i=>i.tier===t);
-    const sec=el('div',{class:'tier'},el('h3',null,el('span',{class:'dot',style:'background:'+TIER[t].color}),TIER[t].name+`（${list.length}）`),el('p',{text:TIER[t].desc}));
-    if(!list.length)sec.appendChild(el('p',{class:'hint',text:t==='hypo'?'目前還沒有。補上實際行為和結果、擅長給到 4 分以上，就有機會升級。':'目前沒有。'}));
-    list.forEach(i=>sec.appendChild(hypoCard(i)));box.appendChild(sec)});
-  if(a.rejected.length){const sec=el('div',{class:'tier'},el('h3',null,el('span',{class:'dot',style:'background:var(--line)'}),`妳覺得不像妳（${a.rejected.length}）`));
-    a.rejected.forEach(i=>sec.appendChild(hypoCard(i)));box.appendChild(sec)}
-}
-function hypoCard(i){
-  const r=S.review[i.v]||{status:'',rename:'',note:'',counter:''};
-  const facts=[`${i.cards.length} 段經驗`,`${i.strong.length} 段有完整證據`,`${i.fb} 則他人回饋`,`${i.up} 次有能量`];if(i.doms.length>=2)facts.push(`跨 ${i.doms.length} 個領域`);
-  const status={confirmed:['確認像我','p-ok'],revise:['需要修正','p-explore'],rejected:['不像我','p-clue']}[r.status];
-  const node=el('article',{class:'hypo'},
-    el('h4',null,el('span',null,`我可能擅長「${i.label}」`,i.label!==i.v?el('small',{class:'hint',text:`（原標籤：${i.v}）`}):null),el('span',{class:'pill '+TIER[i.tier].cls,text:TIER[i.tier].name})),
-    el('p',{class:'facts',text:facts.join('・')}),
-    i.tier==='hypo'&&!i.fb?el('p',{class:'hint',text:'還沒有別人的回饋。找一位熟悉妳的人問一句「妳覺得我在這件事上做得怎麼樣？」，證據會更完整。'}):null,
-    i.strong[0]?el('p',null,'代表事件：',el('b',{text:i.strong[0].title.trim()||'未命名'}),'，'+i.strong[0].result):null,
-    i.down>=1?el('p',{class:'hint',text:`其中 ${i.down} 段做起來被消耗。`}):null,
-    status?el('p',null,el('span',{class:'pill '+status[1],text:status[0]}),r.note?'　'+r.note:''):null,
-    r.counter?el('p',{class:'hint',text:'反例：'+r.counter}):null,
-    el('div',{class:'xactions'},el('button',{type:'button',class:'btn btn-plain btn-sm',onclick:()=>showDetail(i.v)},'看證據'),
-      el('button',{type:'button',class:'btn btn-plain btn-sm','aria-expanded':String(openReview===i.v),onclick:()=>{openReview=openReview===i.v?null:i.v;renderTiers(analyze())}},openReview===i.v?'收起':'確認／修正／記反例')));
-  if(openReview===i.v){
-    const rv=S.review[i.v]=S.review[i.v]||{status:'',rename:'',note:'',counter:''};
-    const seg=el('div',{class:'seg',role:'group','aria-label':'這項像不像妳'});
-    [['confirmed','像我'],['revise','需要修正'],['rejected','不像我']].forEach(([k,lab])=>seg.appendChild(el('button',{type:'button','aria-pressed':String(rv.status===k),text:lab,onclick:()=>{rv.status=rv.status===k?'':k;touch();renderAnalysis()}})));
-    const ren=el('input',{type:'text',id:'rv-rename',maxlength:20,placeholder:'例：把複雜的事排出順序'});ren.value=rv.rename;
-    ren.addEventListener('change',()=>{rv.rename=ren.value.slice(0,20).trim();touch();renderAnalysis()});
-    const note=el('input',{type:'text',id:'rv-note',maxlength:LIMIT.feedback,placeholder:'例：我比較像是幫大家把規則想清楚'});note.value=rv.note;
-    note.addEventListener('input',()=>{rv.note=note.value.slice(0,LIMIT.feedback);touch()});
-    const ctr=el('textarea',{id:'rv-counter',maxlength:LIMIT.text,placeholder:'有沒有哪次用了這個能力卻不順、或很不喜歡？'});ctr.value=rv.counter;
-    ctr.addEventListener('input',()=>{rv.counter=ctr.value.slice(0,LIMIT.text);touch()});
-    node.appendChild(el('div',{class:'review'},seg,
-      rv.status==='revise'?el('label',{class:'field',for:'rv-rename'},'我會把它說成：',ren):null,
-      el('label',{class:'field',for:'rv-note'},'補充說明（選填）',note),
-      el('label',{class:'field',for:'rv-counter'},'反例（選填）',ctr),
-      el('button',{type:'button',class:'btn btn-main btn-sm',onclick:()=>{openReview=null;renderAnalysis()}},'完成')));
-  }
-  return node;
-}
-
-function renderPattern(a){const ul=$('pattern');ul.textContent='';patterns(a).forEach(t=>ul.appendChild(el('li',{text:t})))}
-function renderMap(a){
-  const svg=$('map'),cx=200,cy=200;svg.textContent='';
-  if(!a.cards.length){svg.appendChild(sv('text',{x:cx,y:cy,'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':'var(--f-body)'},'寫下經驗後，連結圖會出現在這裡'));return}
-  const n=a.cards.length,vs=a.items,m=vs.length||1,cp={},vp={};
-  a.cards.forEach((c,i)=>{const ang=(-90+i*360/n)*Math.PI/180;cp[c.id]=[cx+160*Math.cos(ang),cy+160*Math.sin(ang)]});
-  vs.forEach((x,j)=>{const ang=(-90+180/m+j*360/m)*Math.PI/180,r=m>1?72:0;vp[x.v]=[cx+r*Math.cos(ang),cy+r*Math.sin(ang)]});
-  a.cards.forEach(c=>c.verbs.forEach(v=>{if(!vp[v])return;const [x1,y1]=cp[c.id],[x2,y2]=vp[v],up=c.energy==='up',dn=c.energy==='down';
-    const att={x1,y1,x2,y2,stroke:dn?'var(--muted)':'var(--accent)','stroke-width':up?2.2:1.4,opacity:dn?.55:.85};if(dn)att['stroke-dasharray']='5 5';svg.appendChild(sv('line',att))}));
-  a.cards.forEach((c,i)=>{const [x,y]=cp[c.id];const t=[...(c.title.trim()||'經驗 '+(i+1))];const label=t.length>7?t.slice(0,6).join('')+'…':t.join('');
-    svg.appendChild(sv('rect',{x:x-46,y:y-14,width:92,height:28,rx:14,fill:'var(--accent-soft)',stroke:'var(--line)'}));
-    svg.appendChild(sv('text',{x,y,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,'font-weight':600,fill:'var(--fg)','font-family':'var(--f-body)'},label))});
-  vs.forEach(x=>{const [px,py]=vp[x.v],r=10+4*x.cards.length,fill=x.tier==='hypo'?'var(--low)':x.tier==='explore'?'var(--accent)':'var(--surface)',rej=x.review.status==='rejected';
-    svg.appendChild(sv('circle',{cx:px,cy:py,r,fill:rej?'var(--surface)':fill,stroke:x.tier==='clue'||rej?'var(--muted)':fill,'stroke-width':2,opacity:rej?.5:1}));
-    svg.appendChild(sv('text',{x:px,y:py+r+13,'text-anchor':'middle','font-size':12,'font-weight':x.tier==='hypo'?700:500,fill:'var(--fg)','font-family':'var(--f-body)',opacity:rej?.5:1},x.label))});
-}
-
-function taskCandidates(a){const pref=a.active.filter(i=>i.tier!=='clue');return (pref.length?pref:a.active).slice(0,6)}
-function renderTask(a){
-  const pick=$('taskPick');pick.textContent='';const cands=taskCandidates(a);
-  if(S.task.verb&&!cands.find(c=>c.v===S.task.verb)&&!a.items.find(c=>c.v===S.task.verb))S.task.verb='';
-  if(!S.task.verb&&cands[0]){S.task.verb=cands[0].v;if(!S.task.text)S.task.text=EXP[cands[0].v]||''}
-  cands.forEach(c=>pick.appendChild(el('button',{type:'button',class:'vchip','aria-pressed':String(c.v===S.task.verb),text:'驗證「'+c.label+'」',onclick:()=>{
-    const prevDefault=EXP[S.task.verb]||'';const keep=S.task.text.trim()&&S.task.text!==prevDefault;
-    S.task.verb=c.v;if(!keep)S.task.text=EXP[c.v]||`這 7 天刻意用一次「${c.v}」，記下過程和別人的反應。`;$('taskText').value=S.task.text;touch();renderAnalysis()}})));
-  if(!cands.length)pick.appendChild(el('p',{class:'hint',text:'先在經驗卡選能力動詞，這裡會出現可以驗證的優勢。'}));
-  if(document.activeElement!==$('taskText'))$('taskText').value=S.task.text;
-}
-$('taskText').addEventListener('input',e=>{S.task.text=e.target.value.slice(0,LIMIT.text);touch();updateShare()});
-$('taskLog').addEventListener('input',e=>{S.task.log=e.target.value.slice(0,2000);touch()});
-(function days(){const box=$('days');for(let i=0;i<7;i++){const cb=el('input',{type:'checkbox',id:'d'+i});cb.checked=!!S.task.days[i];cb.addEventListener('change',()=>{S.task.days[i]=cb.checked;touch()});box.appendChild(el('label',{for:'d'+i},'D'+(i+1),cb))}$('taskLog').value=S.task.log})();
-
-function sMessage(a){
-  const clip=(t,n)=>{const c=[...t];return c.length>n?c.slice(0,n).join('')+'…':t};
-  const lines=['優勢導航圖'];
-  if(!a.top.length)lines.push('還沒找到有證據的優勢，想請 Lynn 幫我看看',`我寫了 ${a.cards.length} 段經驗，選過的能力：${a.items.map(i=>i.v).join('、')||'無'}`);
-  else a.top.forEach((i,k)=>lines.push(`${k+1}. ${clip(i.label,20)}｜${TIER[i.tier].name}${i.review.status==='confirmed'?'（我確認像我）':''}`));
-  const pat=patterns(a)[0];if(a.cards.length>=2&&pat)lines.push('共通模式：'+clip(pat,60));
-  if(S.task.text.trim())lines.push('7 天任務：'+clip(S.task.text.trim(),80));
-  return lines.join('\n');
-}
-function updateShare(a){a=a||analyze();const m=sMessage(a);$('sMsg').textContent=m;$('sLineBtn').href=lineUrl(m)}
-copyText($('sCopyBtn'),()=>$('sMsg').textContent,$('sMsg'));
-
-function renderAnalysis(){const a=analyze();renderMatrix(a);renderTiers(a);renderPattern(a);renderMap(a);renderTask(a);updateShare(a);
-  $('navImg').hidden=true;$('dlNav').hidden=true;$('navHint').hidden=true}
-
-/* ---------- navigation image ---------- */
-async function drawNav(share){
-  await loadFonts();const a=analyze();
-  const W=1080,H=1920,[c,x]=canvasBase(W,H);
-  x.textAlign='center';x.fillStyle=C.ac;x.font=`500 30px ${C.sans}`;x.fillText(`BeYou 豐盛實驗室 × Lynn　｜　${stamp('優勢導航')}`,W/2,120);
-  x.fillStyle=C.fg;x.font=`700 84px ${C.serif}`;x.fillText('我的優勢導航圖',W/2,230);
-  // pattern
-  x.fillStyle=C.card;rr(x,70,275,W-140,200,30);x.fill();
-  x.textAlign='left';x.fillStyle=C.ac;x.font=`700 28px ${C.sans}`;x.fillText('跨經驗共通模式',110,330);
-  x.fillStyle=C.fg;x.font=`500 32px ${C.sans}`;wrapText(x,patterns(a)[0]||'',110,385,W-220,46,2);
-  // three hypotheses
-  const slots=[0,1,2],top=510,bh=300,gap=24;
-  slots.forEach(k=>{const Y=top+k*(bh+gap),i=a.top[k];x.fillStyle=C.card;rr(x,70,Y,W-140,bh,30);x.fill();
-    x.textAlign='left';x.fillStyle=C.lo;x.font=`700 64px ${C.serif}`;x.fillText(String(k+1),110,Y+90);
-    if(!i){x.fillStyle=C.mu;x.font=`500 32px ${C.sans}`;x.fillText('多寫幾段經驗，這裡會出現下一項優勢',190,Y+80);return}
-    x.fillStyle=C.fg;x.font=`700 50px ${C.serif}`;const name=[...i.label].length>11?[...i.label].slice(0,10).join('')+'…':i.label;x.fillText(name,190,Y+82);
-    x.font=`500 24px ${C.sans}`;const tn=TIER[i.tier].name;const tw=x.measureText(tn).width+28;x.strokeStyle=i.tier==='hypo'?C.lo:C.ac;x.lineWidth=2;rr(x,W-110-tw,Y+46,tw,44,22);x.stroke();
-    x.fillStyle=i.tier==='hypo'?C.lo:C.ac;x.textAlign='center';x.fillText(tn,W-110-tw/2,Y+77);x.textAlign='left';
-    x.font=`500 28px ${C.sans}`;let yy=Y+145;
-    if(share){x.fillStyle=C.mu;
-      x.fillText(`・${i.cards.length} 段經驗支持${i.doms.length>=2?`，橫跨 ${i.doms.length} 個不同領域`:''}`,110,yy);
-      x.fillText(`・${i.strong.length} 段有完整的行為與結果`,110,yy+52);
-      x.fillStyle=C.ac;x.fillText(i.fb?`・${i.fb} 則他人回饋`:`・${i.up} 次做起來有能量`,110,yy+104);return}
-    const ev=(i.strong.length?i.strong:i.cards).slice(0,2);
-    ev.forEach(e=>{x.fillStyle=C.mu;const t=`・${e.title.trim()||'未命名'}：${e.result.trim()||e.action.trim()||'（未寫結果）'}`;yy=wrapText(x,t,110,yy,W-220,40,2)+52});
-    if(i.cards.find(e=>e.feedback.trim())&&yy<Y+bh-10){x.fillStyle=C.ac;x.fillText(`・別人說：${[...i.cards.find(e=>e.feedback.trim()).feedback].slice(0,26).join('')}`,110,Math.min(yy,Y+bh-24))}
-  });
-  // task
-  const TY=top+3*(bh+gap)+6;x.fillStyle='rgba(160,88,63,.12)';rr(x,70,TY,W-140,1740-TY,30);x.fill();
-  x.fillStyle=C.lo;x.font=`700 30px ${C.sans}`;x.fillText(`我的 7 天探索任務${S.task.verb?'｜'+((S.review[S.task.verb]||{}).rename||S.task.verb):''}`,110,TY+58);
-  x.fillStyle=C.fg;x.font=`500 32px ${C.sans}`;wrapText(x,S.task.text.trim()||'還沒設定任務',110,TY+112,W-220,46,Math.max(1,Math.floor((1740-TY-90)/46)));
-  brandFooter(x,W,'找到妳跨經驗的共通優勢');
-  $('navHint').textContent=share?'分享版只顯示優勢名稱和證據數量，不含妳寫的經驗細節，可以放心分享到限動，記得標註 @im_lynn33。手機也可以長按圖片儲存。':'完整版有妳寫的經驗內容，適合自己收藏。要分享出去，建議用分享版。手機也可以長按圖片儲存。';
-  offerDownload(c,share?'BeYou-優勢導航圖-分享版.png':'BeYou-優勢導航圖.png',$('dlNav'),$('navImg'),$('navHint'));
-}
-$('makeNav').addEventListener('click',()=>drawNav(false));
-$('makeNavShare').addEventListener('click',()=>drawNav(true));
-
-/* ---------- backup ---------- */
-function buildBackup(){return JSON.stringify({app:'beyou-abundance',version:2,exportedAt:new Date().toISOString(),scores:isSample?null:scores,strengths:sSample?null:S})}
-function today(){const n=new Date();return `${n.getFullYear()}${String(n.getMonth()+1).padStart(2,'0')}${String(n.getDate()).padStart(2,'0')}`}
-if(!CAN_DOWNLOAD)$('bkDl').hidden=true;
-$('bkDl').addEventListener('click',()=>{try{const u=URL.createObjectURL(new Blob([buildBackup()],{type:'application/json'}));const a=el('a',{href:u,download:`BeYou-備份-${today()}.json`});document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);$('bkMsg').textContent='已下載備份檔，請存在妳找得到的地方。'}catch(e){$('bkMsg').textContent='這個瀏覽器無法下載，請改用「複製備份文字」。'}});
-$('bkCopy').addEventListener('click',async()=>{const t=buildBackup(),o=$('bkOut');
-  try{await navigator.clipboard.writeText(t);$('bkMsg').textContent='已複製。建議貼到自己的備忘錄或傳給自己的 LINE 保存。';o.hidden=true}
-  catch(e){o.value=t;o.hidden=false;o.select();$('bkMsg').textContent='無法自動複製，請手動全選上面的文字複製。'}});
-let pendingBackup=null;
-function checkBackup(text){
-  pendingBackup=null;$('bkConfirm').hidden=true;
-  if(!text||text.length>500000){$('bkMsg').textContent='備份內容是空的或太大，請確認是不是正確的檔案。';return}
-  let d;try{d=JSON.parse(text)}catch(e){$('bkMsg').textContent='讀不懂這份備份，請確認有完整複製。';return}
-  if(!d||d.app!=='beyou-abundance'){$('bkMsg').textContent='這不是豐盛人生盤點的備份。';return}
-  const okScores=Array.isArray(d.scores)&&d.scores.length===8&&d.scores.every(v=>Number.isInteger(v)&&v>=1&&v<=10);
-  const st=d.strengths&&typeof d.strengths==='object'?cleanState(d.strengths):null;
-  if(!okScores&&!st){$('bkMsg').textContent='這份備份裡沒有可以還原的資料。';return}
-  pendingBackup={scores:okScores?d.scores:null,strengths:st};
-  $('bkSummary').textContent=`這份備份有：${okScores?'盤點分數、':''}${st?st.cards.length+' 張經驗卡':''}。還原會覆蓋這台裝置上的現有資料。`;
-  $('bkConfirm').hidden=false;$('bkMsg').textContent='';
-}
-$('bkCheck').addEventListener('click',()=>{const f=$('bkFile').files&&$('bkFile').files[0];
-  if(f){if(f.size>500000){$('bkMsg').textContent='檔案太大，請確認是不是正確的備份檔。';return}const r=new FileReader();r.onload=()=>checkBackup(String(r.result||''));r.onerror=()=>{$('bkMsg').textContent='讀取檔案失敗，請再試一次。'};r.readAsText(f)}
-  else checkBackup($('bkIn').value.trim())});
-$('bkNo').addEventListener('click',()=>{pendingBackup=null;$('bkConfirm').hidden=true});
-$('bkYes').addEventListener('click',()=>{if(!pendingBackup)return;let ok=true;
-  if(pendingBackup.scores)ok=store.set('abundance-scores',pendingBackup.scores)&&ok;
-  if(pendingBackup.strengths)ok=store.set(KEY2,pendingBackup.strengths)&&ok;
-  if(!ok){$('bkMsg').textContent='這個瀏覽器無法儲存，還原沒有成功。';return}
-  location.reload()});
-
-/* ---------- wipe ---------- */
-$('wipeBtn').addEventListener('click',()=>{$('wipeConfirm').hidden=false});
-$('wipeNo').addEventListener('click',()=>{$('wipeConfirm').hidden=true});
-$('wipeYes').addEventListener('click',()=>{['abundance-scores',KEY1,KEY2].forEach(store.del);location.reload()});
-
-/* ---------- routing ---------- */
-function route(){const st=location.hash==='#strengths';$('view-check').hidden=st;$('view-strengths').hidden=!st;
-  $('tab-check').setAttribute('aria-current',st?'false':'page');$('tab-strengths').setAttribute('aria-current',st?'page':'false');
-  $('lede').textContent=st?'把散在不同人生階段的經驗串起來，看見妳一直在用的能力。':'8 個生活維度，3 分鐘看見：哪裡正在支撐妳，哪裡正在消耗妳。';
-  if(st)window.scrollTo(0,0);else drawWheel()}
-window.addEventListener('hashchange',route);
-
-render();renderCards();renderAnalysis();route();
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawWheel);
-})();
-</script>
+<footer>
+  <div class="in">BeYou 豐盛實驗室 © 2026｜LINE @514bnkfe｜<a href="check/">豐盛人生盤點</a>｜<a href="https://ling814078.github.io/linlin/">一對一探索盤點</a></div>
+</footer>
 </body>
 </html>
