@@ -111,6 +111,10 @@ nav .pill{min-height:40px;padding:8px 18px;font-size:14px}
 .card li{padding-left:18px;position:relative}
 .card li::before{content:"";position:absolute;left:0;top:.8em;width:8px;height:1px;background:var(--coffee)}
 .card .pill{margin-top:auto;align-self:flex-start}
+.card .pair{margin-top:auto;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.card .pair .pill{margin-top:0}
+.sublink{font-size:14px;font-weight:700;color:var(--green);text-decoration:none;border-bottom:1px solid var(--sage);padding-bottom:2px}
+.sublink:hover{border-color:var(--green)}
 .card.core{background:var(--oat);border-color:var(--oat)}
 .card.core::after{content:"CORE";position:absolute;top:20px;right:20px;font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--terra);border:1px solid var(--terra);padding:2px 8px;border-radius:999px}
 .note{margin-top:24px;font-size:14px;color:var(--muted);display:flex;gap:12px;align-items:flex-start}
@@ -258,11 +262,14 @@ footer a{text-decoration:none;color:var(--green)}
         <h3>豐盛人生盤點<br>＋優勢導航</h3>
         <span class="price">免費</span>
         <ul>
-          <li>8 個生活面向的生命之輪</li>
-          <li>從不同經驗找出重複出現的能力</li>
+          <li>豐盛盤點：8 個生活面向的生命之輪</li>
+          <li>優勢導航：從不同經驗找出重複出現的能力</li>
           <li>做完傳到 LINE，換一則整理小建議和完整版盤點表</li>
         </ul>
-        <a class="pill pill-green" href="check/">開始盤點 <span class="arrow">→</span></a>
+        <div class="pair">
+          <a class="pill pill-green" href="check/#check">豐盛盤點・3 分鐘 <span class="arrow">→</span></a>
+          <a class="sublink" href="check/#strengths">興趣多、經歷廣？直接做優勢導航 <span class="arrow">→</span></a>
+        </div>
       </article>
       <article class="card core" id="lab">
         <span class="lv">02 · TOGETHER</span>
