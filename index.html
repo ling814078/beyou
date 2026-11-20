@@ -8,252 +8,366 @@
 <meta property="og:title" content="BeYou 豐盛實驗室｜琳琳">
 <meta property="og:description" content="陪 30+ 女性，把卡住的想法整理成下一步。">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#F6F1E9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
 <style>
+/* BeYou Lab — 奶油米白底、深墨綠、赤陶點綴、霧灰綠與燕麥輔色；雜誌感排版 */
 :root{
-  --bg:#faf6f1; --surface:#ffffff; --fg:#3d3530; --muted:#6f6058; --accent:#b08968; --accent-soft:#efe3d6; --line:#e6dbcf; --low:#a0583f; --deep:#3f4a3c;
-  --f-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
-  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --cream:#F6F1E9; --paper:#FBF8F3; --oat:#ECE3D6; --sage:#C9D0C3; --sage-ink:#5E6E62;
+  --green:#2F4A3E; --green-deep:#243B31; --terra:#A2553B; --terra-soft:#F1E1D7; --coffee:#9C8064;
+  --ink:#24221F; --muted:#6B655C; --line:#DCD2C4;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --latin:"Cormorant Garamond","Noto Serif TC",serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
 html,body{margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-text-size-adjust:100%;letter-spacing:.01em}
 a{color:inherit}
-.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--surface);padding:6px 10px;z-index:10}
-.in{max-width:960px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-left,0px))}
-/* nav */
-nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .in{display:flex;align-items:center;gap:16px;height:60px}
-.logo{font-family:var(--f-display);font-weight:700;font-size:18px;text-decoration:none;white-space:nowrap}
-.logo span{color:var(--accent)}
-.links{display:flex;gap:18px;margin-left:auto;font-size:14px}
-.links a{text-decoration:none;color:var(--muted)}
-.links a:hover{color:var(--fg)}
-.navline{font-size:14px;font-weight:700;text-decoration:none;background:#06c755;color:#fff;border-radius:999px;padding:7px 14px;white-space:nowrap}
-@media (max-width:760px){.links{display:none}.navline{margin-left:auto}}
-/* sections */
-section{padding:72px 0}
-.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--accent);margin:0 0 10px}
-h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.3;text-wrap:balance}
-h1{font-size:clamp(36px,8vw,58px)}
-h2{font-size:clamp(26px,5vw,36px);margin-bottom:14px}
-h3{font-size:20px}
 p{margin:0}
-.lead{color:var(--muted);font-size:17px;max-width:36em}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-weight:700;font-size:16px;text-decoration:none;border-radius:999px;padding:12px 22px;min-height:46px;border:0;cursor:pointer}
-.btn-main{background:var(--fg);color:var(--bg)}
-.btn-line{background:#06c755;color:#fff}
-.btn-ghost{border:1.5px solid var(--fg);color:var(--fg);background:transparent}
-.row{display:flex;flex-wrap:wrap;gap:10px}
+h1,h2,h3{font-family:var(--serif);margin:0;line-height:1.3;text-wrap:balance;color:var(--ink)}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--paper);padding:6px 10px;z-index:20}
+.in{max-width:1080px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
+.label{font-family:var(--latin);font-size:13px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--coffee)}
+@media (max-width:640px){.label{letter-spacing:.2em;font-size:12px}}
+.label.zh{font-family:var(--sans);letter-spacing:.18em;font-size:12px}
+.head{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.head .zh{color:var(--muted);font-size:14px;letter-spacing:.12em}
+h2{font-size:clamp(28px,4.6vw,42px);font-weight:700}
+.lead{color:var(--muted);font-size:17px;max-width:34em}
+section{padding:96px 0}
+@media (max-width:640px){section{padding:72px 0}}
+
+/* pills */
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:15px;font-weight:700;letter-spacing:.04em;text-decoration:none;border-radius:999px;padding:12px 24px;min-height:48px;border:1.5px solid transparent;transition:transform .15s,background .15s}
+.pill:hover{transform:translateY(-1px)}
+.pill-green{background:var(--green);color:var(--paper)}
+.pill-terra{background:var(--terra);color:#fff}
+.pill-line{border-color:currentColor;color:var(--ink);background:transparent}
+.pill-white{background:var(--paper);color:var(--terra)}
+.pill-ghost-w{border-color:rgba(255,255,255,.8);color:#fff}
+.arrow{font-family:var(--latin);font-size:18px;line-height:1}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(246,241,233,.9);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+nav .in{display:flex;align-items:center;gap:28px;height:64px}
+.logo{font-family:var(--latin);font-size:24px;font-weight:600;text-decoration:none;letter-spacing:.02em;white-space:nowrap}
+.logo i{color:var(--terra);font-style:italic}
+.links{display:flex;gap:26px;margin-left:auto;font-size:14px}
+.links a{text-decoration:none;color:var(--muted);letter-spacing:.06em}
+.links a:hover{color:var(--green)}
+nav .pill{min-height:40px;padding:8px 18px;font-size:14px}
+@media (max-width:820px){.links{display:none}nav .pill{margin-left:auto}}
+
 /* hero */
-.hero{padding:80px 0 64px}
-.hero .in{display:flex;flex-direction:column;gap:22px}
-.hello{font-size:18px;color:var(--muted)}
-.proof{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
-.proof::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
-/* paths */
-.paths{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:24px}
-.path{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:10px}
-.path .tag{font-size:12px;color:var(--accent);letter-spacing:.08em}
-.path p{color:var(--muted);font-size:15px;flex:1}
-.path a.go{font-weight:700;text-decoration:none;color:var(--low)}
-.path.main{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.sub{font-size:14px;color:var(--muted);margin-top:16px}
-.sub a{color:var(--accent);font-weight:700}
+.hero{padding:72px 0 88px}
+.hero .in{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+@media (max-width:860px){.hero .in{grid-template-columns:1fr;gap:40px}}
+.hero-txt{display:flex;flex-direction:column;gap:24px}
+.hello{font-family:var(--serif);font-size:20px;color:var(--muted)}
+.hero h1{font-size:clamp(40px,6.4vw,66px);font-weight:900;letter-spacing:.02em;line-height:1.18}
+.hero h1 em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.18em;background:var(--sage);z-index:-1;opacity:.8}
+.hero .lead{font-size:17px}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.cover{background:var(--green);color:var(--paper);border-radius:4px;padding:18px;position:relative;box-shadow:0 30px 60px -30px rgba(36,59,49,.5)}
+.cover-in{border:1px solid rgba(251,248,243,.55);padding:40px 28px 30px;display:flex;flex-direction:column;gap:22px;position:relative;min-height:400px}
+@media (max-width:860px){.cover-in{min-height:0;padding:36px 22px 24px}}
+.cover-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--green);padding:0 12px;font-family:var(--latin);font-size:12px;letter-spacing:.34em;white-space:nowrap;color:var(--sage)}
+.cover blockquote{margin:0;font-family:var(--serif);font-size:clamp(24px,3vw,30px);font-weight:700;line-height:1.55;color:var(--paper)}
+.cover .who{font-size:14px;color:var(--sage);letter-spacing:.08em}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:auto;border-top:1px solid rgba(251,248,243,.25);padding-top:20px}
+.stats b{display:block;font-family:var(--latin);font-size:36px;font-weight:600;line-height:1;color:var(--paper)}
+.stats span{font-size:12px;color:var(--sage);letter-spacing:.06em}
+.cover .corner{position:absolute;right:22px;bottom:16px;font-family:var(--latin);color:var(--sage);font-size:20px}
+
+/* start: editorial rows */
+.start{background:var(--paper);border-block:1px solid var(--line)}
+.rows{border-top:1px solid var(--ink)}
+.r{display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s}
+.r:hover{background:var(--cream)}
+.r .no{font-family:var(--latin);font-size:46px;font-weight:500;color:var(--coffee);line-height:1}
+.r h3{font-size:clamp(20px,2.6vw,26px);margin-bottom:6px}
+.r p{color:var(--muted);font-size:15px;max-width:40em}
+.r .go{font-weight:700;color:var(--terra);white-space:nowrap;font-size:15px;display:flex;gap:8px;align-items:center}
+.r.main h3{color:var(--green)}
+.r .tag{display:inline-block;font-size:12px;letter-spacing:.1em;color:var(--sage-ink);background:var(--sage);border-radius:999px;padding:1px 10px;margin-bottom:8px}
+@media (max-width:640px){.r{grid-template-columns:52px 1fr;gap:14px}.r .no{font-size:34px}.r .go{grid-column:2}}
+.aside{margin-top:22px;font-size:14px;color:var(--muted)}
+.aside a{color:var(--green);font-weight:700;text-underline-offset:4px}
+
 /* services */
-.alt{background:var(--surface);border-block:1px solid var(--line)}
-.svc{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:28px}
-.card{border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
-.card .lv{font-size:12px;letter-spacing:.1em;color:var(--muted)}
-.card .price{font-family:var(--f-display);font-size:22px;color:var(--low)}
-.card ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:15px}
-.card .btn{margin-top:auto;align-self:flex-start}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.svc{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:30px 26px;display:flex;flex-direction:column;gap:16px;position:relative}
+.card .lv{font-family:var(--latin);font-size:12px;font-weight:600;letter-spacing:.3em;color:var(--coffee)}
+.card h3{font-size:24px}
+.card .price{font-family:var(--serif);font-size:18px;color:var(--terra);font-weight:700;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:15px}
+.card li{padding-left:18px;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:.8em;width:8px;height:1px;background:var(--coffee)}
+.card .pill{margin-top:auto;align-self:flex-start}
+.card.core{background:var(--oat);border-color:var(--oat)}
+.card.core::after{content:"CORE";position:absolute;top:20px;right:20px;font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--terra);border:1px solid var(--terra);padding:2px 8px;border-radius:999px}
+.note{margin-top:24px;font-size:14px;color:var(--muted);display:flex;gap:12px;align-items:flex-start}
+.note::before{content:"";flex:0 0 2px;align-self:stretch;background:var(--green)}
+
 /* about */
-.about{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:start}
-.about .txt{display:flex;flex-direction:column;gap:14px;color:var(--muted)}
-.quote{font-family:var(--f-display);font-size:clamp(24px,4.5vw,32px);line-height:1.45;border-left:3px solid var(--accent);padding-left:18px}
-/* beyou */
-.ways{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:24px}
-.way{border-top:2px solid var(--accent);padding-top:12px}
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+@media (max-width:860px){.about{grid-template-columns:1fr;gap:28px}}
+.about .txt{display:flex;flex-direction:column;gap:18px;color:var(--muted);font-size:16px}
+.about .txt p:first-child{font-family:var(--serif);font-size:20px;color:var(--ink);line-height:1.7}
+.ruled{border-left:2px solid var(--green);padding:4px 0 4px 20px}
+
+/* quote band */
+.band{background:var(--green);padding:28px 0}
+.band .frame{border:1px solid rgba(251,248,243,.5);padding:64px 24px;text-align:center;position:relative}
+.band .frame .cover-tag{background:var(--green)}
+.band p{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,44px);line-height:1.5;color:var(--paper)}
+.band small{display:block;margin-top:18px;color:var(--sage);font-size:14px;letter-spacing:.14em}
+
+/* circle */
+.ways{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+@media (max-width:860px){.ways{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.ways{grid-template-columns:1fr}}
+.way{display:flex;flex-direction:column;gap:10px}
+.way svg{width:44px;height:44px;stroke:var(--coffee);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.way h3{font-size:20px}
 .way p{color:var(--muted);font-size:15px}
-.steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:28px;counter-reset:s}
-.st{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;counter-increment:s}
-.st::before{content:counter(s);font-family:var(--f-display);font-size:28px;color:var(--accent);display:block;line-height:1}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid var(--ink)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.st{padding:26px 24px 8px 0;display:flex;gap:16px}
+.st b{font-family:var(--latin);font-size:40px;font-weight:500;color:var(--terra);line-height:1}
+.st h3{font-size:19px;margin-bottom:4px}
 .st p{color:var(--muted);font-size:15px}
+
 /* events */
-.ev{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:8px;margin-top:20px;max-width:620px}
-.ev .meta{font-size:14px;color:var(--muted)}
+.events{background:var(--paper);border-block:1px solid var(--line)}
+.ev{display:grid;grid-template-columns:150px 1fr;background:var(--cream);border:1px solid var(--line);border-radius:6px;overflow:hidden;max-width:760px}
+@media (max-width:560px){.ev{grid-template-columns:1fr}}
+.date{background:var(--terra);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 12px;gap:2px}
+.date b{font-family:var(--latin);font-size:52px;font-weight:600;line-height:1}
+.date span{font-family:var(--latin);letter-spacing:.3em;font-size:13px}
+.ev-b{padding:26px 28px;display:flex;flex-direction:column;gap:10px}
+.ev-b h3{font-size:22px}
+.ev-b .meta{font-size:14px;color:var(--muted)}
+.ev-b .pill{align-self:flex-start;margin-top:6px}
+
 /* faq */
-.faq{display:flex;flex-direction:column;gap:10px;margin-top:20px;max-width:720px}
-details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
-summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq{border-top:1px solid var(--ink);max-width:820px}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font-family:var(--serif);font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"＋";color:var(--accent)}
-details[open] summary::after{content:"－"}
-details p{color:var(--muted);margin-top:8px;font-size:15px}
+summary::after{content:"+";font-family:var(--latin);font-size:28px;color:var(--terra);line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:10px;font-size:15px;max-width:42em}
+
 /* cta */
-.cta{background:var(--deep);color:#f5efe7;text-align:center}
-.cta .in{display:flex;flex-direction:column;align-items:center;gap:18px}
-.cta p{color:#d9cfc3}
-.cta .btn-ghost{border-color:#f5efe7;color:#f5efe7}
-footer{padding:28px 0 40px;font-size:13px;color:var(--muted);text-align:center}
-footer a{color:var(--accent)}
+.cta-box{background:var(--terra);color:#fff;border-radius:28px;padding:64px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+.cta-box h2{color:#fff}
+.cta-box p{color:#F6E6DC;max-width:30em}
+.cta-box .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+footer{padding:36px 0 48px;font-size:13px;color:var(--muted)}
+footer .in{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:24px}
+footer nav{position:static;background:none;border:0;backdrop-filter:none;display:flex;gap:18px;flex-wrap:wrap}
+footer a{text-decoration:none;color:var(--green)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pill,.r{transition:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">跳至主要內容</a>
 <nav aria-label="主選單">
   <div class="in">
-    <a class="logo" href="#top">BeYou <span>Lab.</span></a>
+    <a class="logo" href="#top">BeYou <i>Lab.</i></a>
     <div class="links">
       <a href="#services">個人服務</a>
       <a href="#about">關於琳琳</a>
-      <a href="#beyou">認識 BeYou</a>
+      <a href="#circle">認識 BeYou</a>
       <a href="#events">近期活動</a>
     </div>
-    <a class="navline" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">加 LINE 聊聊</a>
+    <a class="pill pill-green" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">加 LINE 聊聊</a>
   </div>
 </nav>
 
 <main id="main">
 <section class="hero" id="top">
   <div class="in">
-    <p class="eyebrow">新竹・連結 × 共學 × 行動</p>
-    <p class="hello">妳好，我是琳琳。</p>
-    <h1>讓妳先被理解，<br>再開始。</h1>
-    <p class="lead">給 30+ 的妳，正在一人工作，或摸索下一段職涯。想整理自己的狀態與方向，可以先做免費盤點、找我個別聊；想認識同行的女性，歡迎來 BeYou 聚會。</p>
-    <p class="proof">新竹實體聚會・已有 80+ 位女性一起交流過</p>
-    <div class="row"><a class="btn btn-main" href="#start">找到我的下一步 ↓</a></div>
-  </div>
-</section>
-
-<section id="start" style="padding-top:0">
-  <div class="in">
-    <h2>妳現在想從哪裡開始？</h2>
-    <div class="paths">
-      <article class="path main">
-        <span class="tag">免費・約 3 分鐘</span>
-        <h3>我想先看看自己現在的狀態</h3>
-        <p>用 8 個生活面向畫出妳的生命之輪，再用「優勢導航」把不同階段的經驗放在一起，找出一直重複出現的能力。資料只存在妳的手機。</p>
-        <a class="go" href="check/">開始免費盤點 →</a>
-      </article>
-      <article class="path">
-        <span class="tag">新竹聚會</span>
-        <h3>我想認識新竹可以真實交流的女性</h3>
-        <p>下一場：11/25（三）｜BeYou 台語讀書會。不用準備自我介紹，帶一件最近在想的事就好。</p>
-        <a class="go" href="#events">看近期活動 ↓</a>
-      </article>
-      <article class="path">
-        <span class="tag">Instagram</span>
-        <h3>我想先看看琳琳是誰</h3>
-        <p>IG @im_lynn33，一人工作和生活裡的實驗紀錄。</p>
-        <a class="go" href="https://www.instagram.com/im_lynn33/" target="_blank" rel="noopener">前往 Instagram ↗</a>
-      </article>
+    <div class="hero-txt">
+      <span class="label">Hsinchu · Connect × Learn × Act</span>
+      <p class="hello">妳好，我是琳琳。</p>
+      <h1>讓妳先<em>被理解</em>，<br>再開始。</h1>
+      <p class="lead">給 30+ 的妳，正在一人工作，或摸索下一段職涯。想整理自己的狀態與方向，可以先做免費盤點、找我個別聊；想認識同行的女性，歡迎來 BeYou 聚會。</p>
+      <div class="row">
+        <a class="pill pill-terra" href="check/">開始免費盤點 <span class="arrow">→</span></a>
+        <a class="pill pill-line" href="#start">找到我的下一步</a>
+      </div>
     </div>
-    <p class="sub">已經在一人工作，但不確定卡在哪個環節？可以先做 3 分鐘的 <a href="https://ling814078.github.io/imlynn33/">一人工作卡點診斷</a>。</p>
+    <aside class="cover" aria-label="BeYou 豐盛實驗室">
+      <div class="cover-in">
+        <span class="cover-tag">BEYOU LAB</span>
+        <blockquote>陪 30+ 女性，<br>把卡住的想法，<br>整理成下一步。</blockquote>
+        <span class="who">— 琳琳｜BeYou 豐盛實驗室發起人</span>
+        <div class="stats">
+          <div><b>80+</b><span>位女性交流過</span></div>
+          <div><b>10</b><span>年一人工作</span></div>
+          <div><b>3</b><span>分鐘免費盤點</span></div>
+        </div>
+      </div>
+    </aside>
   </div>
 </section>
 
-<section class="alt" id="services">
+<section class="start" id="start">
   <div class="in">
-    <p class="eyebrow">琳琳的個人服務</p>
-    <h2>先自己看一次，<br>需要時再一起往下整理。</h2>
-    <p class="lead">我不給標準答案，也不做陪跑。工具幫妳先看見現在的自己，對談和工作坊幫妳把看見的東西，變成一個這週就能試的行動。</p>
+    <div class="head"><span class="label">Where to start</span><h2>妳現在想從哪裡開始？</h2></div>
+    <div class="rows">
+      <a class="r main" href="check/">
+        <span class="no">01</span>
+        <div><span class="tag">免費・約 3 分鐘</span><h3>我想先看看自己現在的狀態</h3><p>用 8 個生活面向畫出妳的生命之輪，再用「優勢導航」把不同階段的經驗放在一起，找出一直重複出現的能力。資料只存在妳的手機。</p></div>
+        <span class="go">開始免費盤點 <span class="arrow">→</span></span>
+      </a>
+      <a class="r" href="#events">
+        <span class="no">02</span>
+        <div><h3>我想認識新竹可以真實交流的女性</h3><p>下一場：11/25（三）BeYou 台語讀書會。不用準備自我介紹，帶一件最近在想的事就好。</p></div>
+        <span class="go">看近期活動 <span class="arrow">↓</span></span>
+      </a>
+      <a class="r" href="https://www.instagram.com/im_lynn33/" target="_blank" rel="noopener">
+        <span class="no">03</span>
+        <div><h3>我想先看看琳琳是誰</h3><p>IG @im_lynn33，一人工作和生活裡的實驗紀錄。</p></div>
+        <span class="go">前往 Instagram <span class="arrow">↗</span></span>
+      </a>
+    </div>
+    <p class="aside">已經在一人工作，但不確定卡在哪個環節？可以先做 3 分鐘的 <a href="https://ling814078.github.io/imlynn33/">一人工作卡點診斷</a>。</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="in">
+    <div class="head">
+      <span class="label">Services</span>
+      <h2>先自己看一次，<br>需要時再一起往下整理。</h2>
+      <p class="lead">工具幫妳先看見現在的自己；工作坊和對談，幫妳把看見的東西，變成一個這週就能試的行動。</p>
+    </div>
     <div class="svc">
       <article class="card">
-        <span class="lv">第一步・自己來</span>
-        <h3>豐盛人生盤點＋優勢導航</h3>
+        <span class="lv">01 · ON YOUR OWN</span>
+        <h3>豐盛人生盤點<br>＋優勢導航</h3>
         <span class="price">免費</span>
         <ul>
           <li>8 個生活面向的生命之輪</li>
           <li>從不同經驗找出重複出現的能力</li>
           <li>做完傳到 LINE，換一則整理小建議和完整版盤點表</li>
         </ul>
-        <a class="btn btn-main" href="check/">開始盤點</a>
+        <a class="pill pill-green" href="check/">開始盤點 <span class="arrow">→</span></a>
       </article>
-      <article class="card" id="lab">
-        <span class="lv">一起來・6–10 人</span>
+      <article class="card core" id="lab">
+        <span class="lv">02 · TOGETHER</span>
         <h3>優勢線索實驗室</h3>
-        <span class="price">首場籌備中</span>
+        <span class="price">首場籌備中・6–10 人</span>
         <ul>
           <li>90 分鐘小團體工作坊，新竹平日下午</li>
           <li>寫經驗卡、找優勢線索、同伴互相回饋</li>
           <li>帶走一張優勢導航圖和七天行動實驗</li>
         </ul>
-        <a class="btn btn-ghost" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">LINE 輸入「實驗室」加入等候名單</a>
+        <a class="pill pill-terra" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">LINE 輸入「實驗室」排隊</a>
       </article>
       <article class="card">
-        <span class="lv">一對一・線上</span>
+        <span class="lv">03 · ONE ON ONE</span>
         <h3>一對一探索盤點</h3>
         <span class="price">NT$888・首波 15 位</span>
         <ul>
-          <li>60 分鐘對談＋一份書面《探索盤點報告》</li>
+          <li>60 分鐘線上對談＋書面《探索盤點報告》</li>
           <li>卡點拆解、2–3 個有證據的優勢線索</li>
           <li>一個七天內就能試的行動實驗</li>
         </ul>
-        <a class="btn btn-ghost" href="https://ling814078.github.io/linlin/">了解一對一探索盤點</a>
+        <a class="pill pill-line" href="https://ling814078.github.io/linlin/">了解一對一 <span class="arrow">→</span></a>
       </article>
     </div>
+    <p class="note">我不給標準答案，也不做陪跑；工具只看妳真實做過的事，不用命盤或牌卡。</p>
   </div>
 </section>
 
+<div class="band" aria-label="琳琳的話">
+  <div class="in">
+    <div class="frame">
+      <span class="cover-tag">IN HER WORDS</span>
+      <p>我不給標準答案，<br>我陪妳找到自己的答案。</p>
+      <small>— 琳琳</small>
+    </div>
+  </div>
+</div>
+
 <section id="about">
   <div class="in about">
-    <div>
-      <p class="eyebrow">關於琳琳</p>
+    <div class="head" style="margin:0">
+      <span class="label">About Lynn</span>
       <h2>從十年美甲工作，<br>走到女性交流圈。</h2>
     </div>
     <div class="txt">
       <p>10 年的美甲師工作，讓我學會的不只是技術，還有怎麼在一段對話裡真正聽見一個人。</p>
-      <p>我遇過很多女性，她們不缺才華，缺的是一個能說真話、也能被理解的地方。所以我在新竹發起 BeYou，讓大家坐下來聊聊，把過去的經驗說清楚，也聽聽別人怎麼走過類似的路。</p>
+      <p class="ruled">我遇過很多女性，她們不缺才華，缺的是一個能說真話、也能被理解的地方。</p>
+      <p>所以我在新竹發起 BeYou，讓大家坐下來聊聊，把過去的經驗說清楚，也聽聽別人怎麼走過類似的路。</p>
       <p>我也提供個人整理服務，陪妳把自己的狀態、累積的經驗和眼前的卡點說清楚，一起找到可以開始的一步。</p>
-      <p class="quote">我不給標準答案，<br>我陪妳找到自己的答案。</p>
     </div>
   </div>
 </section>
 
-<section class="alt" id="beyou">
+<section id="circle" style="padding-top:0">
   <div class="in">
-    <p class="eyebrow">認識 BeYou</p>
-    <h2>BeYou 是新竹的女性交流圈</h2>
-    <p class="lead">我們透過閱讀、對話和共學，認識不同領域的女性，也一起把想嘗試的事拆成做得到的一步。</p>
+    <div class="head">
+      <span class="label">The Circle</span>
+      <h2>BeYou 是新竹的女性交流圈</h2>
+      <p class="lead">我們透過閱讀、對話和共學，認識不同領域的女性，也一起把想嘗試的事拆成做得到的一步。</p>
+    </div>
     <div class="ways">
-      <div class="way"><h3>讀書會</h3><p>從一本書出發，聊到自己的生活與工作。</p></div>
-      <div class="way"><h3>跨界對話</h3><p>聽不同女性分享她們的摸索、轉彎與選擇。</p></div>
-      <div class="way"><h3>實作共學</h3><p>帶著真實題目來，帶著一個能動手的步驟離開。</p></div>
-      <div class="way"><h3>資源連結</h3><p>讓彼此的能力與需要，在對的時機遇見。</p></div>
+      <div class="way">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 12c6-3 12-3 18 1v25c-6-4-12-4-18-1z"/><path d="M42 12c-6-3-12-3-18 1v25c6-4 12-4 18-1z"/></svg>
+        <h3>讀書會</h3><p>從一本書出發，聊到自己的生活與工作。</p>
+      </div>
+      <div class="way">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 10h24v16H16l-6 5v-5H6z"/><path d="M34 18h8v14h-4v5l-6-5h-8v-4"/></svg>
+        <h3>跨界對話</h3><p>聽不同女性分享她們的摸索、轉彎與選擇。</p>
+      </div>
+      <div class="way">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38V18l14-8 14 8v20"/><path d="M18 38V26h12v12"/><path d="M6 38h36"/></svg>
+        <h3>實作共學</h3><p>帶著真實題目來，帶著一個能動手的步驟離開。</p>
+      </div>
+      <div class="way">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="13" cy="24" r="7"/><circle cx="35" cy="14" r="5"/><circle cx="35" cy="34" r="5"/><path d="M19 21l11-5M19 27l11 5"/></svg>
+        <h3>資源連結</h3><p>讓彼此的能力與需要，在對的時機遇見。</p>
+      </div>
     </div>
-    <h3 style="margin-top:36px">想參加 BeYou 聚會，三步就好</h3>
-    <div class="steps">
-      <div class="st"><h3>挑一場</h3><p>在下方「近期活動」選一場有興趣的。</p></div>
-      <div class="st"><h3>報名</h3><p>點活動卡上的報名按鈕，或加 LINE 告訴琳琳。</p></div>
-      <div class="st"><h3>帶著近況來</h3><p>不用準備自我介紹，帶一件最近在想的事就好。</p></div>
+    <div class="steps" aria-label="參加 BeYou 聚會的三個步驟">
+      <div class="st"><b>1</b><div><h3>挑一場</h3><p>在下方「近期活動」選一場有興趣的。</p></div></div>
+      <div class="st"><b>2</b><div><h3>報名</h3><p>點活動卡上的報名按鈕，或加 LINE 告訴琳琳。</p></div></div>
+      <div class="st"><b>3</b><div><h3>帶著近況來</h3><p>不用準備自我介紹，帶一件最近在想的事就好。</p></div></div>
     </div>
   </div>
 </section>
 
-<section id="events">
+<section class="events" id="events">
   <div class="in">
-    <p class="eyebrow">近期活動</p>
-    <h2>下一場聚會</h2>
+    <div class="head"><span class="label">Upcoming</span><h2>下一場聚會</h2></div>
     <article class="ev">
-      <h3>11/25（三）｜BeYou 台語讀書會</h3>
-      <p class="meta">時間：待公布｜地點：新竹，詳細地點待公布｜費用：待公布</p>
-      <p>台語講得不溜也沒關係，一起讀、一起聊。</p>
-      <div class="row" style="margin-top:6px"><a class="btn btn-ghost" href="https://claude.ai/artifact/GSJyiezyt8FfpVxGUbSbgR" target="_blank" rel="noopener">看活動詳情與報名 ↗</a></div>
+      <div class="date"><span>NOV</span><b>25</b><span>WED</span></div>
+      <div class="ev-b">
+        <h3>BeYou 台語讀書會</h3>
+        <p class="meta">時間：待公布｜地點：新竹，詳細地點待公布｜費用：待公布</p>
+        <p>台語講得不溜也沒關係，一起讀、一起聊。</p>
+        <a class="pill pill-green" href="https://claude.ai/artifact/GSJyiezyt8FfpVxGUbSbgR" target="_blank" rel="noopener">看活動詳情與報名 <span class="arrow">↗</span></a>
+      </div>
     </article>
-    <p class="sub">場次會陸續更新，想第一時間收到通知，可以加 LINE。</p>
+    <p class="aside">場次會陸續更新，想第一時間收到通知，可以加 LINE。</p>
   </div>
 </section>
 
-<section class="alt" id="faq">
+<section id="faq">
   <div class="in">
-    <p class="eyebrow">常見問題</p>
-    <h2>妳可能想問的</h2>
+    <div class="head"><span class="label">FAQ</span><h2>妳可能想問的</h2></div>
     <div class="faq">
       <details><summary>個人服務和 BeYou 活動，怎麼選？</summary><p>想針對自己的狀態、能力或工作方向整理，可以先做免費盤點，再看要參加優勢線索實驗室或一對一探索盤點。想認識同伴、聽不同經驗，可以從 BeYou 活動開始。</p></details>
       <details><summary>優勢線索實驗室和一對一探索盤點差在哪？</summary><p>實驗室是 6–10 人一起做的 90 分鐘工作坊，有同伴互相回饋；一對一只看妳一個人，60 分鐘，會多一份書面報告。</p></details>
@@ -265,20 +379,26 @@ footer a{color:var(--accent)}
   </div>
 </section>
 
-<section class="cta">
+<section style="padding-top:0">
   <div class="in">
-    <h2>先帶著真實的自己來，<br>我們再一起整理。</h2>
-    <p>想了解個人服務，或問下一場 BeYou 活動，都可以告訴我妳現在最在意的一件事。</p>
-    <div class="row" style="justify-content:center">
-      <a class="btn btn-line" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">加 LINE 聊聊</a>
-      <a class="btn btn-ghost" href="https://www.instagram.com/im_lynn33/" target="_blank" rel="noopener">Instagram @im_lynn33</a>
+    <div class="cta-box">
+      <span class="label" style="color:#F6E6DC">Let's talk</span>
+      <h2>先帶著真實的自己來，<br>我們再一起整理。</h2>
+      <p>想了解個人服務，或問下一場 BeYou 活動，都可以告訴我妳現在最在意的一件事。</p>
+      <div class="row">
+        <a class="pill pill-white" href="https://lin.ee/pWa9RGJ" target="_blank" rel="noopener">加 LINE 聊聊</a>
+        <a class="pill pill-ghost-w" href="https://www.instagram.com/im_lynn33/" target="_blank" rel="noopener">Instagram @im_lynn33</a>
+      </div>
     </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="in">BeYou 豐盛實驗室 © 2026｜LINE @514bnkfe｜<a href="check/">豐盛人生盤點</a>｜<a href="https://ling814078.github.io/linlin/">一對一探索盤點</a></div>
+  <div class="in">
+    <span>BeYou 豐盛實驗室 © 2026｜LINE @514bnkfe</span>
+    <nav aria-label="頁尾連結"><a href="check/">豐盛人生盤點</a><a href="https://ling814078.github.io/linlin/">一對一探索盤點</a><a href="https://ling814078.github.io/imlynn33/">一人工作卡點診斷</a></nav>
+  </div>
 </footer>
 </body>
 </html>
