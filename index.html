@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#F6F1E9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
 <style>
 /* BeYou Lab — 奶油米白底、深墨綠、赤陶點綴、霧灰綠與燕麥輔色；雜誌感排版 */
 :root{
@@ -26,7 +26,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
 html,body{margin:0}
-body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-text-size-adjust:100%;letter-spacing:.01em}
+body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-size:16px;line-height:1.8;-webkit-text-size-adjust:100%;letter-spacing:.01em}
 a{color:inherit}
 p{margin:0}
 h1,h2,h3{font-family:var(--serif);margin:0;line-height:1.3;text-wrap:balance;color:var(--ink)}
@@ -43,7 +43,7 @@ section{padding:96px 0}
 @media (max-width:640px){section{padding:72px 0}}
 
 /* pills */
-.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:15px;font-weight:700;letter-spacing:.04em;text-decoration:none;border-radius:999px;padding:12px 24px;min-height:48px;border:1.5px solid transparent;transition:transform .15s,background .15s}
+.pill{font-family:var(--sans)!important;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:15px;font-weight:700;letter-spacing:.04em;text-decoration:none;border-radius:999px;padding:12px 24px;min-height:48px;border:1.5px solid transparent;transition:transform .15s,background .15s}
 .pill:hover{transform:translateY(-1px)}
 .pill-green{background:var(--green);color:var(--paper)}
 .pill-terra{background:var(--terra);color:#fff}
@@ -64,14 +64,16 @@ nav .pill{min-height:40px;padding:8px 18px;font-size:14px}
 @media (max-width:820px){.links{display:none}nav .pill{margin-left:auto}}
 
 /* hero */
-.hero{padding:72px 0 88px}
+.hero{padding:72px 0 56px}
 .hero .in{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
 @media (max-width:860px){.hero .in{grid-template-columns:1fr;gap:40px}}
 .hero-txt{display:flex;flex-direction:column;gap:24px}
 .hello{font-family:var(--serif);font-size:20px;color:var(--muted)}
-.hero h1{font-size:clamp(40px,6.4vw,66px);font-weight:900;letter-spacing:.02em;line-height:1.18}
-.hero h1 em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}
-.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.18em;background:var(--sage);z-index:-1;opacity:.8}
+.hero h1{font-size:clamp(36px,5.4vw,60px);font-weight:900;letter-spacing:.02em;line-height:1.28}
+.hero h1 span{display:block}
+.hero h1 .l1{color:var(--ink)}
+.hero h1 .l2{color:var(--terra)}
+.hero h1 .l3{color:var(--green)}
 .hero .lead{font-size:17px}
 .hero .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .cover{background:var(--green);color:var(--paper);border-radius:4px;padding:18px;position:relative;box-shadow:0 30px 60px -30px rgba(36,59,49,.5)}
@@ -86,7 +88,10 @@ nav .pill{min-height:40px;padding:8px 18px;font-size:14px}
 .cover .corner{position:absolute;right:22px;bottom:16px;font-family:var(--latin);color:var(--sage);font-size:20px}
 
 /* start: editorial rows */
-.start{background:var(--paper);border-block:1px solid var(--line)}
+.start{background:var(--paper);border-bottom:1px solid var(--line)}
+.wave{display:block;width:100%;height:56px;margin-top:-1px;background:var(--cream)}
+.wave path{fill:var(--paper)}
+@media (max-width:640px){.wave{height:32px}}
 .rows{border-top:1px solid var(--ink)}
 .r{display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s}
 .r:hover{background:var(--cream)}
@@ -202,8 +207,7 @@ footer a{text-decoration:none;color:var(--green)}
   <div class="in">
     <div class="hero-txt">
       <span class="label">Hsinchu · Connect × Learn × Act</span>
-      <p class="hello">妳好，我是琳琳。</p>
-      <h1>讓妳先<em>被理解</em>，<br>再開始。</h1>
+      <h1><span class="l1">妳好，我是琳琳。</span><span class="l2">讓妳先被理解，</span><span class="l3">再開始。</span></h1>
       <p class="lead">給 30+ 的妳，正在一人工作，或摸索下一段職涯。想整理自己的狀態與方向，可以先做免費盤點、找我個別聊；想認識同行的女性，歡迎來 BeYou 聚會。</p>
       <div class="row">
         <a class="pill pill-terra" href="check/">開始免費盤點 <span class="arrow">→</span></a>
@@ -225,6 +229,7 @@ footer a{text-decoration:none;color:var(--green)}
   </div>
 </section>
 
+<svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 C 240 8, 480 8, 720 28 S 1200 52, 1440 22 L1440 56 L0 56 Z"/></svg>
 <section class="start" id="start">
   <div class="in">
     <div class="head"><span class="label">Where to start</span><h2>妳現在想從哪裡開始？</h2></div>
